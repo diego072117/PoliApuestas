@@ -16,9 +16,12 @@ return new class extends Migration
             $table->unsignedBigInteger('numeroDocumento');
             $table->string('nombre');
             $table->string('correo')->unique();
+            $table->string('rol');
+            $table->integer('edad');
             $table->string('telefono', 15);
             $table->string('password');
             $table->timestamps();
+            $table->softDeletes(); 
         });
     }
 

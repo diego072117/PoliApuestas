@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Transaccion\TransaccionController;
 use App\Http\Controllers\Usuario\Usuariocontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class],function(){
+Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], function () {
     Route::post('/CreateUser', 'createUser');
+    Route::get('/GetAllUsers', 'getAllUsers');
+    Route::get('/GetUser/{id}', 'getUserById');
+});
+
+Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
+    Route::post('/New/{id_usuario}', 'createTransaccion');
 });
