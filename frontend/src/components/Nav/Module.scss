@@ -1,0 +1,25 @@
+.container-nav {
+  background-color: #f9ece6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+  & .item-nav {
+    background: transparent;
+    border: none;
+    margin: 1em;
+    text-decoration: none;
+    color: #514f4f;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  & .user-options {
+    display: flex;
+    align-items: center;
+    & i {
+      color: #000;
+      margin: 0 10px;
+    }
+  }
+}

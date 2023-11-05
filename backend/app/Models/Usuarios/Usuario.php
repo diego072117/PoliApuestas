@@ -15,11 +15,11 @@ class Usuario extends Model
     protected $table = 'usuarios'; // Especifica el nombre de la tabla si es diferente al nombre del modelo
 
     protected $fillable = [
+        'tipoDocumento',
         'numeroDocumento',
         'nombre',
         'correo',
         'rol',
-        'edad',
         'telefono',
         'password',
     ];
