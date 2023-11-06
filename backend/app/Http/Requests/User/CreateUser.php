@@ -24,8 +24,8 @@ class CreateUser extends FormRequest
         return [
             'tipoDocumento' => ['required', 'string'],
             'numeroDocumento' => ['required', 'numeric', 'unique:usuarios'],
-            'nombre' => ['required', 'string'],
-            'correo' =>  ['required', 'email', 'unique:usuarios'],
+            'name' => ['required', 'string'],
+            'email' =>  ['required', 'email', 'unique:usuarios'],
             'rol' => ['required', 'string'],
             'telefono' => ['required', 'string'],
             'password' => ['required', 'string'],
@@ -43,12 +43,12 @@ class CreateUser extends FormRequest
             'numeroDocumento.numeric' => 'El documento debe ser un valor numérico.',
             'numeroDocumento.unique' => 'El documento ya está registrado en la base de datos.',
 
-            'nombre.required' => 'El nombre es requerido.',
-            'nombre.string' => 'El nombre debe ser una cadena de texto.',
+            'name.required' => 'El nombre es requerido.',
+            'name.string' => 'El nombre debe ser una cadena de texto.',
 
-            'correo.required' => 'El correo es requerido.',
-            'correo.email' => 'El correo debe tener un formato válido.',
-            'correo.unique' => 'El correo ya está registrado en la base de datos.',
+            'email.required' => 'El correo es requerido.',
+            'email.email' => 'El correo debe tener un formato válido.',
+            'email.unique' => 'El correo ya está registrado en la base de datos.',
 
             'rol.required' => 'El rol es requerido.',
             'rol.numeric' => 'El rol debe ser una cadena de texto.',

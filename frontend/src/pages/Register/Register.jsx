@@ -7,8 +7,8 @@ export const Register = () => {
   const [formData, setFormData] = useState({
     tipoDocumento: "CC",
     numeroDocumento: "",
-    nombre: "",
-    correo: "",
+    name: "",
+    email: "",
     rol: "normal",
     telefono: "",
     password: "",
@@ -51,8 +51,8 @@ export const Register = () => {
           <label>Nombre completo:</label>
           <input
             type="text"
-            name="nombre"
-            value={formData.nombre}
+            name="name"
+            value={formData.name}
             onChange={handleInputChange}
           />
         </div>
@@ -60,8 +60,8 @@ export const Register = () => {
           <label>Correo Electrónico:</label>
           <input
             type="email"
-            name="correo"
-            value={formData.correo}
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
           />
         </div>

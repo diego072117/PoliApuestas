@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('tipoDocumento');
             $table->unsignedBigInteger('numeroDocumento');
-            $table->string('nombre');
-            $table->string('correo')->unique();
+            $table->string('name');
+            $table->string('email')->unique();
             $table->string('rol');
             $table->string('telefono', 15);
             $table->string('password');

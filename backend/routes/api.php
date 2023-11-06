@@ -20,6 +20,7 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
     Route::post('/CreateUser', 'createUser');
     Route::get('/GetAllUsers', 'getAllUsers');
     Route::get('/GetUser/{id}', 'getUserById');
+    Route::post('/Login', 'loginUser');
 });
 
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
