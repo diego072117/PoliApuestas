@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUser;
 use App\Models\Usuarios\Usuario;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class Usuariocontroller extends Controller
@@ -39,17 +38,6 @@ class Usuariocontroller extends Controller
         return response()->json($user);
     }
 
-    // public function loginUser(Request $request)
-    // {
-    //     $credentials = $request->only('email', 'password');
-    //     if (Auth::attempt($credentials)) {
-    //         $user = Auth::user();
-    //         return $user;
-    //     } else {
-    //         // La autenticación falló
-    //         return response()->json(['message' => 'Credenciales incorrectas'], 401);
-    //     }
-    // }
     public function loginUser(Request $request)
     {
         $credentials = $request->only('email', 'password');
@@ -68,7 +56,7 @@ class Usuariocontroller extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'user' => $user, // Incluye los datos del usuario en la respuesta
+            'user' => $user,
         ]);
     }
 }

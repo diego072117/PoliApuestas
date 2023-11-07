@@ -5,9 +5,9 @@ export const Register = () => {
   const { NewUser } = UseUserActions();
 
   const [formData, setFormData] = useState({
+    name: "",
     tipoDocumento: "CC",
     numeroDocumento: "",
-    name: "",
     email: "",
     rol: "normal",
     telefono: "",
@@ -28,6 +28,15 @@ export const Register = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
+          <label>Nombre completo:</label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
           <label>Tipo Documento:</label>
           <select
             name="tipoDocumento"
@@ -44,15 +53,6 @@ export const Register = () => {
             type="number"
             name="numeroDocumento"
             value={formData.numeroDocumento}
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label>Nombre completo:</label>
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
             onChange={handleInputChange}
           />
         </div>

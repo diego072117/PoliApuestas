@@ -22,9 +22,9 @@ class CreateUser extends FormRequest
     public function rules(): array
     {
         return [
+            'name' => ['required', 'string'],
             'tipoDocumento' => ['required', 'string'],
             'numeroDocumento' => ['required', 'numeric', 'unique:usuarios'],
-            'name' => ['required', 'string'],
             'email' =>  ['required', 'email', 'unique:usuarios'],
             'rol' => ['required', 'string'],
             'telefono' => ['required', 'string'],
@@ -36,15 +36,15 @@ class CreateUser extends FormRequest
     {
 
         return [
+            'name.required' => 'El nombre es requerido.',
+            'name.string' => 'El nombre debe ser una cadena de texto.',
+
             'tipoDocumento.required' => 'El tipo de documento es requerido.',
             'tipoDocumento.string' => 'El tipo de documento debe ser una cadena de texto.',
 
             'numeroDocumento.required' => 'El documento es requerido.',
             'numeroDocumento.numeric' => 'El documento debe ser un valor numérico.',
             'numeroDocumento.unique' => 'El documento ya está registrado en la base de datos.',
-
-            'name.required' => 'El nombre es requerido.',
-            'name.string' => 'El nombre debe ser una cadena de texto.',
 
             'email.required' => 'El correo es requerido.',
             'email.email' => 'El correo debe tener un formato válido.',
