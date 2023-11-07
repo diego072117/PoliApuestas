@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Transaccion\TransaccionController;
+use App\Http\Controllers\Usuario\Usuariocontroller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +16,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], function () {
+    Route::post('/CreateUser', 'createUser');
+    Route::get('/GetAllUsers', 'getAllUsers');
+    Route::get('/GetUser/{id}', 'getUserById');
+    Route::post('/Login', 'loginUser');
+});
+
+Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
+    Route::post('/{id_usuario}', 'createTransaccion');
 });
