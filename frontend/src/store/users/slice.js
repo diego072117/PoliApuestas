@@ -55,11 +55,11 @@ export const usersSlice = createSlice({
   initialState,
   reducers: {
     logout: (state) => {
-      // Restaura el estado a los valores iniciales
       state.auth = { access_token: false, user: null };
       state.status = "idle";
       state.error = null;
       localStorage.removeItem("auth");
+      
     },
   },
   extraReducers: (builder) => {

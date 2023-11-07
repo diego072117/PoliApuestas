@@ -24,5 +24,5 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
 });
 
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
-    Route::post('/New/{id_usuario}', 'createTransaccion');
+    Route::post('/{id_usuario}', 'createTransaccion');
 });

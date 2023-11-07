@@ -4,6 +4,7 @@ import { Nav } from "../components/Nav/Nav";
 import { Register } from "../pages/Register/Register";
 import { Login } from "../pages/Login/Login";
 import { Dash } from "../pages/Dasboard/Dash";
+import { Perfil } from "../pages/Perfil/Perfil";
 
 export const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ export const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dash />} />
+        <Route path="/perfil" element={<Perfil />} />
       </Routes>
     </>
   );
