@@ -21,6 +21,9 @@ export const Nav = () => {
             <Link to="/dashboard" className="item-nav">
               DASHBOARD
             </Link>
+            <Link to="/rifa" className="item-nav">
+              RIFAS
+            </Link>
             <button className="item-nav" onClick={LogoutUser}>
               <i className="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
             </button>

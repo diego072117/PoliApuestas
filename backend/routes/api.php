@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Rifa\RifaController;
 use App\Http\Controllers\Transaccion\TransaccionController;
 use App\Http\Controllers\Usuario\Usuariocontroller;
 use Illuminate\Http\Request;
@@ -26,3 +27,8 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
     Route::post('/{id_usuario}', 'createTransaccion');
 });
+
+Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], function () {
+    Route::post('/CreateRifa', 'createRifa');
+});
+

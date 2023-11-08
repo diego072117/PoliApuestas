@@ -12,9 +12,8 @@ export const createTransactionAsync = createAsyncThunk(
         `http://127.0.0.1:8000/api/Transaccion/${transaccionData.id_usuario}`,
         { monto_transaccion: transaccionData.monto_transaccion }
       );
-
-      // Devuelve la respuesta del backend
-      //return response.data;
+      
+      return response.data;
     } catch (error) {
       throw new Error(error.message);
     }
