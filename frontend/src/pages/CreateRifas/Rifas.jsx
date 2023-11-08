@@ -9,8 +9,8 @@ export const Rifa = () => {
     nombreRifa: "",
     descripcion: "",
     id_usuarioCreador: user.id,
-    boletasTotales: 0,
-    valorBoleta: 0,
+    boletasTotales: "",
+    valorBoleta: "",
     primerPremio: "",
     segundoPremio: "",
   });

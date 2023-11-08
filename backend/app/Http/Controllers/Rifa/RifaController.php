@@ -18,4 +18,23 @@ class RifaController extends Controller
         $rifa->save();
         return response()->json(['message' => 'Rifa creada con éxito'], 201);
     }
+
+    public function getAllRifas()
+    {
+        $rifas = Rifas::all();
+
+        return response()->json($rifas, 200);
+        //return response()->json(['rifas' => $rifas], 200);
+    }
+
+    public function getRifaById($id)
+    {
+        $rifa = Rifas::find($id);
+
+        if ($rifa) {
+            return response()->json($rifa, 200);
+        } else {
+            return response()->json(['message' => 'Rifa no encontrada'], 404);
+        }
+    }
 }

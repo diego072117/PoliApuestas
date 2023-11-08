@@ -9,7 +9,7 @@ const store = configureStore({
   reducer: {
     users: usersSlice,
     transaccion: transactionsSlice,
-    rifa: rifaSlice,
+    rifas: rifaSlice,
 
   },
 });

@@ -30,5 +30,7 @@ Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::
 
 Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], function () {
     Route::post('/CreateRifa', 'createRifa');
+    Route::get('/GetAllRifas', 'getAllRifas');
+    Route::get('/GetRifa/{id}', 'getRifaById');
 });
 
