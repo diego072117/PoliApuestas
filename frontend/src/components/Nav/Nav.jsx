@@ -1,4 +1,3 @@
-
 import useValidators from "../../hooks/useValidations";
 import { UseUserActions } from "../../hooks/UseUserActions";
 import { Link } from "react-router-dom";
@@ -20,6 +19,12 @@ export const Nav = () => {
             </Link>
             <Link to="/dashboard" className="item-nav">
               DASHBOARD
+            </Link>
+            <Link to="/rifa" className="item-nav">
+              RIFAS
+            </Link>
+            <Link to="/listRifas" className="item-nav">
+              LISTA RIFAS
             </Link>
             <button className="item-nav" onClick={LogoutUser}>
               <i className="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
