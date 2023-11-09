@@ -2,6 +2,7 @@
 
 namespace App\Models\Usuarios;
 
+use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Transaccion\Transaccion;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -14,7 +15,7 @@ class Usuario extends Authenticatable implements JWTSubject
 {
     use HasFactory, SoftDeletes, Notifiable;
 
-    protected $table = 'usuarios'; // Especifica el nombre de la tabla si es diferente al nombre del modelo
+    protected $table = 'usuarios';
 
     protected $fillable = [
         'name',

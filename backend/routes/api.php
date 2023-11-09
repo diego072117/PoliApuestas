@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ParticipantesRifa\ParticipantesRifaController;
 use App\Http\Controllers\Rifa\RifaController;
 use App\Http\Controllers\Transaccion\TransaccionController;
 use App\Http\Controllers\Usuario\Usuariocontroller;
@@ -32,5 +33,11 @@ Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], functi
     Route::post('/CreateRifa', 'createRifa');
     Route::get('/GetAllRifas', 'getAllRifas');
     Route::get('/GetRifa/{id}', 'getRifaById');
+    Route::get('/GetBoletasDisponibles/{idRifa}', 'getBoletasDisponibles');
+});
+
+Route::group(['prefix' => 'Participantes', 'controller' => ParticipantesRifaController::class], function () {
+    Route::post('/CreateParticipante', 'newParticipante');
+    Route::get('/GetSaldo/{id}', 'consultarSaldoUsuario');
 });
 

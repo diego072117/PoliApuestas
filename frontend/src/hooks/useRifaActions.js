@@ -1,10 +1,8 @@
 import { useDispatch } from "react-redux";
-import { createRifaAsync, listRifaByIdAsync, listRifasAsync } from "../store/rifas/slice";
-import { useNavigate } from "react-router-dom";
+import { createRifaAsync, getBoletasDisponiblesAsync, listRifaByIdAsync, listRifasAsync } from "../store/rifas/slice";
 
 export const useRifaActions = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const createRifa = (rifaData) => {
     dispatch(createRifaAsync(rifaData));
@@ -17,9 +15,14 @@ export const useRifaActions = () => {
     dispatch(listRifaByIdAsync(id));
   };
 
+  const getBoletasDisponibles = (idRifa) => {
+    dispatch(getBoletasDisponiblesAsync(idRifa));
+  };
+
   return {
     createRifa,
     listRifas,
     getRifaById,
+    getBoletasDisponibles,
   };
 };

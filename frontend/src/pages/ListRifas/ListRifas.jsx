@@ -11,7 +11,6 @@ export const ListRifas = () => {
     listRifas();
   }, []);
 
- 
   return (
     <div>
       <h2>Lista de Rifas</h2>

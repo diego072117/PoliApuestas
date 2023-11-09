@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const initialState = {
   rifas: [],
+  boletasDisponibles: [],
   rifaById: null,
   status: "idle",
   error: null,
@@ -11,13 +12,13 @@ const initialState = {
 
 export const createRifaAsync = createAsyncThunk(
   "rifa/createRifa",
-  async (rifaData,{dispatch}) => {
+  async (rifaData, { dispatch }) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/Rifa/CreateRifa",
         rifaData
       );
-      await dispatch(listRifasAsync())
+      await dispatch(listRifasAsync());
       return response.data;
     } catch (error) {
       throw new Error(error.message);
@@ -36,7 +37,9 @@ export const listRifasAsync = createAsyncThunk("rifas/listRifas", async () => {
   }
 });
 
-export const listRifaByIdAsync = createAsyncThunk("rifa/listRifa    ", async (id) => {
+export const listRifaByIdAsync = createAsyncThunk(
+  "rifa/listRifaById",
+  async (id) => {
     try {
       const response = await axios.get(
         `http://127.0.0.1:8000/api/Rifa/GetRifa/${id}`
@@ -45,7 +48,22 @@ export const listRifaByIdAsync = createAsyncThunk("rifa/listRifa    ", async (id
     } catch (error) {
       throw new Error(error.message);
     }
-  });
+  }
+);
+
+export const getBoletasDisponiblesAsync = createAsyncThunk(
+  "rifas/getBoletasDisponibles",
+  async (idRifa) => {
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/Rifa/GetBoletasDisponibles/${idRifa}`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
 
 const rifaSlice = createSlice({
   name: "rifas",
@@ -94,8 +112,18 @@ const rifaSlice = createSlice({
       .addCase(listRifaByIdAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(getBoletasDisponiblesAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(getBoletasDisponiblesAsync.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.boletasDisponibles = action.payload;
+      })
+      .addCase(getBoletasDisponiblesAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
-      
   },
 });
 

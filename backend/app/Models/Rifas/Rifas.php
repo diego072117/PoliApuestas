@@ -2,7 +2,6 @@
 
 namespace App\Models\Rifas;
 
-use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Usuarios\Usuario;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -32,8 +31,4 @@ class Rifas extends Model
         return $this->belongsTo(Usuario::class, 'id_usuarioCreador', 'id');
     }
 
-    public function participantes()
-    {
-        return $this->hasMany(Participanterifa::class, 'id_rifa', 'id');
-    }
 }
