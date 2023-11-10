@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ParticipantesRifa\ParticipantesRifaController;
+use App\Http\Controllers\Rifa\RifaController;
 use App\Http\Controllers\Transaccion\TransaccionController;
 use App\Http\Controllers\Usuario\Usuariocontroller;
 use Illuminate\Http\Request;
@@ -20,8 +22,21 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
     Route::post('/CreateUser', 'createUser');
     Route::get('/GetAllUsers', 'getAllUsers');
     Route::get('/GetUser/{id}', 'getUserById');
+    Route::post('/Login', 'loginUser');
 });
 
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
-    Route::post('/New/{id_usuario}', 'createTransaccion');
+    Route::post('/{id_usuario}', 'createTransaccion');
 });
+
+Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], function () {
+    Route::post('/CreateRifa', 'createRifa');
+    Route::get('/GetAllRifas', 'getAllRifas');
+    Route::get('/GetRifa/{id}', 'getRifaById');
+    Route::get('/GetBoletasDisponibles/{idRifa}', 'getBoletasDisponibles');
+});
+
+Route::group(['prefix' => 'Participantes', 'controller' => ParticipantesRifaController::class], function () {
+    Route::post('/CreateParticipante', 'newParticipante');
+});
+

@@ -1,12 +1,23 @@
 import { useDispatch } from "react-redux";
-import { registerUserAsync } from "../store/users/slice"; // Cambia a registerUserAsync
+import { registerUserAsync, loginUserAsync, logout } from "../store/users/slice"; 
+import { useNavigate } from "react-router-dom";
 
 export const UseUserActions = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const NewUser = (userData) => {
-    dispatch(registerUserAsync(userData)); // Usa registerUserAsync para la lógica asincrónica
+    dispatch(registerUserAsync(userData)); 
   };
 
-  return { NewUser };
+  const LoginUser = (userData) => {
+    dispatch(loginUserAsync(userData));
+  };
+
+  const LogoutUser = () => {
+    dispatch(logout());
+    navigate("/"); 
+  };
+
+  return { NewUser, LoginUser, LogoutUser };
 };

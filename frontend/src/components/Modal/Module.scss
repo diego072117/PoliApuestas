@@ -1,0 +1,42 @@
+.modal-overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal {
+    background-color: #fff;
+    max-width: 24em;
+    width: 100%;
+    border-radius: 20px;
+    padding: 1em;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+    border-bottom: solid 1px #525252;
+    color: rgb(39, 130, 216);
+    font-weight: 700;
+    font-size: 20px;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .close-btn {
+      border: none;
+      background-color: #fff;
+      cursor: pointer;
+      font-size: 20px;
+      color: rgb(39, 130, 216);
+      font-weight: 700;
+    }
+    
