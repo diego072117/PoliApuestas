@@ -38,6 +38,5 @@ Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], functi
 
 Route::group(['prefix' => 'Participantes', 'controller' => ParticipantesRifaController::class], function () {
     Route::post('/CreateParticipante', 'newParticipante');
-    Route::get('/GetSaldo/{id}', 'consultarSaldoUsuario');
 });
 
