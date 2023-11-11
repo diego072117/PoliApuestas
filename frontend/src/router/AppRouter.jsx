@@ -6,7 +6,6 @@ import { Login } from "../pages/Login/Login";
 import { Dash } from "../pages/Dasboard/Dash";
 import { Perfil } from "../pages/Perfil/Perfil";
 import { Rifa } from "../pages/CreateRifas/Rifas";
-import { ListRifas } from "../pages/ListRifas/ListRifas";
 import { DetallesRifa } from "../pages/DetallesRifa/DetallesRifa";
 
 export const AppRouter = () => {
@@ -20,7 +19,6 @@ export const AppRouter = () => {
         <Route path="/dashboard" element={<Dash />} />
         <Route path="/perfil" element={<Perfil />} />
         <Route path="/rifa" element={<Rifa />} />
-        <Route path="/listRifas" element={<ListRifas />} />
         <Route path="/detallesRifa/:id" element={<DetallesRifa />} />
       </Routes>
     </>

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./Module.scss";
 
 export const Nav = () => {
-  const { isUserAuthenticated } = useValidators;
+  const { isUserAuthenticated, isUserRolOrganizador } = useValidators;
   const { LogoutUser } = UseUserActions();
   return (
     <>
@@ -12,25 +12,30 @@ export const Nav = () => {
         <Link to="/" className="item-nav">
           HOME
         </Link>
-        {isUserAuthenticated() ? (
-          <>
-            <Link to="/perfil" className="item-nav">
-              PERFIL
-            </Link>
-            <Link to="/dashboard" className="item-nav">
-              DASHBOARD
-            </Link>
-            <Link to="/rifa" className="item-nav">
-              RIFAS
-            </Link>
-            <Link to="/listRifas" className="item-nav">
-              LISTA RIFAS
-            </Link>
-            <button className="item-nav" onClick={LogoutUser}>
-              <i className="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
-            </button>
-          </>
-        ) : (
+
+        {isUserAuthenticated() && (
+          <Link to="/perfil" className="item-nav">
+            PERFIL
+          </Link>
+        )}
+
+        {isUserAuthenticated() && (
+          <Link to="/dashboard" className="item-nav">
+            DASHBOARD
+          </Link>
+        )}
+        {isUserAuthenticated() && isUserRolOrganizador() && (
+          <Link to="/rifa" className="item-nav">
+            CREAR RIFA
+          </Link>
+        )}
+      
+        {isUserAuthenticated() && (
+          <button className="item-nav" onClick={LogoutUser}>
+            <i className="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
+          </button>
+        )}
+        {!isUserAuthenticated() && (
           <div className="user-options">
             <Link to="/register" className="item-nav">
               <i className="fa fa-user" aria-hidden="true"></i> REGISTER

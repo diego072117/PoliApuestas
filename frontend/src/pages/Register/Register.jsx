@@ -9,7 +9,7 @@ export const Register = () => {
     tipoDocumento: "CC",
     numeroDocumento: "",
     email: "",
-    rol: "normal",
+    rol: "participante",
     telefono: "",
     password: "",
   });
@@ -68,7 +68,7 @@ export const Register = () => {
         <div>
           <label>Rol:</label>
           <select name="rol" value={formData.rol} onChange={handleInputChange}>
-            <option value="normal">Normal</option>
+            <option value="participante">Participante</option>
             <option value="organizador">Organizador</option>
           </select>
         </div>

@@ -1,13 +1,10 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
+import { InfoUser } from "../../components/InfoUser/InfoUser";
+import "./Module.scss"
 export const Dash = () => {
-
-  const user = useSelector((state) => state.users.auth.user);
   return (
     <>
-      <div>
-        <h1>Hola {user ? user.name : "user"}</h1>
+      <div className="info-user-dash">
+        <InfoUser />
       </div>
     </>
   );
