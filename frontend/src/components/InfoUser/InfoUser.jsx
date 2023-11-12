@@ -13,17 +13,18 @@ export const InfoUser = () => {
           alt=""
         />
         <div className="info-user">
-          <p className="name-user">Diego_Parra</p>
-          <p className="email-user">parracalderond9@gmail.com</p>
+          <p className="name-user">
+            {user.name}_{user.lastName}
+          </p>
+          <p className="email-user">{user.email}</p>
         </div>
-        <Link to="#" className="button-user">Editar perfil</Link>
+        <Link to="#" className="button-user">
+          Editar perfil
+        </Link>
         <p>
           <i className="fa-solid fa-bookmark"></i> 11 Boletas
         </p>
       </div>
-      {/* <div>
-        <h1>Hola {user ? user.name : "user"}</h1>
-      </div> */}
     </div>
   );
 };
