@@ -12,8 +12,13 @@ export const useValidators = () => {
     return user === "organizador" ? true : false;
   };
 
+  const isUserRolParticipante = () => {
+    return user === "participante" ? true : false;
+  };
+
   return {
     isUserAuthenticated,
     isUserRolOrganizador,
+    isUserRolParticipante,
   };
 };

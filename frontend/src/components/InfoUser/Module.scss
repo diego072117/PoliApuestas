@@ -1,4 +1,4 @@
-.container-dash {
+.container-info-user {
   width: 20em;
   font-family: sans-serif;
   .container-user {
@@ -14,27 +14,42 @@
     }
     .info-user {
       color: #e6edf3;
-        margin-bottom: 1.5em;
+      margin-bottom: 1.5em;
       .name-user {
         font-weight: bold;
         font-size: 24px;
         line-height: 1.5;
       }
-      .email-user {
-        color: #7d8590;
-        font-size: 15px;
+      .email-user,
+      .document-user,
+      .tel-user {
+        color: #7D8590;
+        font-size: 17px;
         font-style: normal;
+      }
+
+      .document-user,
+      .tel-user {
+        margin-top: 8px;
       }
     }
     .button-user {
-      width: 100%;
-      border: 1px solid #484F58;
+      width: 97%;
+      border: 1px solid #484f58;
       border-radius: 5px;
       background-color: #21262d;
       text-align: center;
       padding: 5px;
       color: #c9d1d9;
       text-decoration: none;
+      margin-bottom: 1em;
+    }
+    .boletas {
+      color: #7d8590;
+      font-weight: 100;
+      .boletas-compradas {
+        color: #fff;
+      }
     }
   }
 }

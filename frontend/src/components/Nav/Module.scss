@@ -1,38 +1,49 @@
 .container-nav {
-  background-color: #f9ece6;
+  background-color: #08040c;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 15px 15px 0 0;
-  & .item-nav {
-    background: transparent;
-    border: none;
-    margin: 1em;
-    text-decoration: none;
-    color: #514f4f;
-    text-align: center;
-    cursor: pointer;
+  flex-direction: column;
+  padding: 10px;
+
+  .user-info-nav {
+    display: flex;
+    justify-content: space-between;
+
+    .options-nav {
+      display: flex;
+      align-items: center;
+      color: #fff;
+      margin-bottom: 10px;
+      .logo-nav {
+        font-size: 30px;
+     
+      }
+      .user-nav {
+        margin: 0 12px;
+        font-size: 20px;
+      }
+    }
+    .auth-nav {
+      display: flex;
+      align-items: center;
+      .sing-in {
+      }
+      .sing-out,
+      .sing-up {
+        background: transparent;
+        padding: 5px;
+        border: 1px solid #fff;
+        border-radius: 6px;
+      }
+    }
   }
 
-  & .user-options {
-    display: flex;
-    align-items: center;
-    & i {
-      color: #000;
-      margin: 0 10px;
-    }
-
-    .img-avatar {
-      width: 2em;
-      height: 2em;
-      border-radius: 50%;
-        margin: 0 10px;
-    }
+  .autn-opcions {
   }
 }
 
-.username{
-    margin-top: -6px;
-    font-size: 10px;
-    text-align: center;
+.item-nav {
+  color: #fff;
+  font-family: cursive;
+  text-decoration: none;
+  margin: 8px;
 }

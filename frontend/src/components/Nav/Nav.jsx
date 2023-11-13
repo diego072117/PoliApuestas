@@ -2,42 +2,73 @@ import { useValidators } from "../../hooks/useValidations";
 import { UseUserActions } from "../../hooks/UseUserActions";
 import { Link } from "react-router-dom";
 import "./Module.scss";
+import { useSelector } from "react-redux";
 
 export const Nav = () => {
   const { isUserAuthenticated, isUserRolOrganizador } = useValidators();
   const { LogoutUser } = UseUserActions();
+  const user = useSelector((state) => state.users.auth.user);
   return (
     <nav className="container-nav">
-      <Link to="/" className="item-nav">
-        HOME
-      </Link>
-      {isUserAuthenticated() ? (
-        <>
-          <Link to="/perfil" className="item-nav">
-            PERFIL
+      <div className="user-info-nav">
+        <div className="options-nav">
+          <i className="fa-brands fa-github logo-nav"></i>
+          {!isUserAuthenticated() && (
+            <>
+              <Link to="/" className="item-nav">
+                Home
+              </Link>
+              <Link to="/" className="item-nav">
+                Services
+              </Link>
+              <Link to="/" className="item-nav">
+                About us
+              </Link>
+              <Link to="/" className="item-nav">
+                Contact
+              </Link>
+            </>
+          )}
+          {isUserAuthenticated() && (
+            <>
+              <p className="user-nav">{user.email}</p>
+            </>
+          )}
+        </div>
+        <div className="auth-nav">
+          {!isUserAuthenticated() && (
+            <>
+              <Link to="/register" className="item-nav sing-in">
+                Sign in
+              </Link>
+              <Link to="/login" className="item-nav sing-up">
+                Sign up
+              </Link>
+            </>
+          )}
+          {isUserAuthenticated() && (
+            <button className="sing-out item-nav" onClick={LogoutUser}>
+              Sign out
+            </button>
+          )}
+        </div>
+      </div>
+      {isUserAuthenticated() && (
+        <div className="autn-opcions">
+          <Link to="/dashboard" className="item-nav color-one">
+            <i className="fa-brands fa-twitch"></i> Dasboard
           </Link>
-          <Link to="/dashboard" className="item-nav">
-            DASHBOARD
+          <Link to="#" className="item-nav color-one">
+            <i className="fa-brands fa-twitch"></i> Historial
           </Link>
           {isUserRolOrganizador() && (
-            <Link to="/rifa" className="item-nav">
-              CREAR RIFA
+            <Link to="/rifa" className="item-nav color-one">
+              <i className="fa-brands fa-twitch"></i> Crear rifas
             </Link>
           )}
-          <button className="item-nav" onClick={LogoutUser}>
-            <i className="fa fa-sign-out" aria-hidden="true"></i> LOGOUT
-          </button>
-        </>
-      ) : (
-        <div className="user-options">
-          <Link to="/register" className="item-nav">
-            <i className="fa fa-user" aria-hidden="true"></i> REGISTER
+          <Link to="/perfil" className="item-nav color-one">
+            <i className="fa-brands fa-twitch"></i> Perfil
           </Link>
-          <Link to="/login" className="item-nav">
-            <i className="fa fa-user" aria-hidden="true"></i> LOGIN
-          </Link>
-          <i className="fa fa-shopping-bag" aria-hidden="true"></i>
-          <i className="fa fa-search" aria-hidden="true"></i>
         </div>
       )}
     </nav>

@@ -1,5 +1,13 @@
-.info-user-dash{
-    display: flex;
-    justify-content: center;
-    margin-top: 3em;
+.container-dash {
+  margin: 3em 10em;
+  display: flex;
+}
+.info-user-dash {
+}
+
+.info-rifas-dash{
+  margin: 0 3em;
+  width: 100%; 
+  max-width: 40em;
+  //margin: 0 auto;
 }
