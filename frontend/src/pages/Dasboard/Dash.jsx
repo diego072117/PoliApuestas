@@ -1,14 +1,19 @@
-import React from "react";
-import { useSelector } from "react-redux";
-
+import { InfoUser } from "../../components/InfoUser/InfoUser";
+import { ListRifas } from "../../components/ListRifas/ListRifas";
+import { useValidators } from "../../hooks/useValidations";
+import "./Module.scss";
 export const Dash = () => {
-
-  const user = useSelector((state) => state.users.auth.user);
+  const { isUserRolParticipante } = useValidators();
   return (
-    <>
-      <div>
-        <h1>Hola {user ? user.name : "user"}</h1>
+    <div className="container-dash">
+      <div className="info-user-dash">
+        <InfoUser />
       </div>
-    </>
+      {isUserRolParticipante() && (
+        <div className="info-rifas-dash">
+          <ListRifas />
+        </div>
+      )}
+    </div>
   );
 };

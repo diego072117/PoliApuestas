@@ -56,5 +56,28 @@ class RifaController extends Controller
 
         return response()->json($boletasDisponibles, 200);
     }
-    
+
+    public function seleccionarGanadores($idRifa)
+    {
+        $participantes = Participanterifa::where('id_rifa', $idRifa)->get();
+
+        if ($participantes->count() < 2) {
+            return response()->json(['error' => 'No hay suficientes participantes para seleccionar dos ganadores'], 400);
+        }
+
+        // Obtener dos números de boleta aleatorios
+        $ganador1 = $participantes->random()->numeroBoleta;
+        $ganador2 = $participantes->where('numeroBoleta', '!=', $ganador1)->random()->numeroBoleta;
+        //$ganador2 = $participantes->random()->numeroBoleta;
+
+        dd('ganador1',$ganador1,'ganador2',$ganador2);
+
+        // Guardar los ganadores en la tabla Rifas
+        $rifa = Rifas::find($idRifa);
+        $rifa->primerGanador = $ganador1;
+        $rifa->segundoGanador = $ganador2;
+        $rifa->save();
+
+        return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente'], 200);
+    }
 }

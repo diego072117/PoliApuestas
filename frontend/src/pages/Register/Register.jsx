@@ -6,10 +6,13 @@ export const Register = () => {
 
   const [formData, setFormData] = useState({
     name: "",
+    secondName: "",
+    lastName: "",
+    secondLastName: "",
     tipoDocumento: "CC",
     numeroDocumento: "",
     email: "",
-    rol: "normal",
+    rol: "participante",
     telefono: "",
     password: "",
   });
@@ -28,11 +31,38 @@ export const Register = () => {
     <div>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Nombre completo:</label>
+          <label>Nombre:</label>
           <input
             type="text"
             name="name"
             value={formData.name}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Segundo Nombre:</label>
+          <input
+            type="text"
+            name="secondName"
+            value={formData.secondName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Apellido:</label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div>
+          <label>Segundo Apellido</label>
+          <input
+            type="text"
+            name="secondLastName"
+            value={formData.secondLastName}
             onChange={handleInputChange}
           />
         </div>
@@ -68,7 +98,7 @@ export const Register = () => {
         <div>
           <label>Rol:</label>
           <select name="rol" value={formData.rol} onChange={handleInputChange}>
-            <option value="normal">Normal</option>
+            <option value="participante">Participante</option>
             <option value="organizador">Organizador</option>
           </select>
         </div>

@@ -34,6 +34,7 @@ Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], functi
     Route::get('/GetAllRifas', 'getAllRifas');
     Route::get('/GetRifa/{id}', 'getRifaById');
     Route::get('/GetBoletasDisponibles/{idRifa}', 'getBoletasDisponibles');
+    Route::post('/SeleccionarGanadores/{idRifa}', 'seleccionarGanadores');
 });
 
 Route::group(['prefix' => 'Participantes', 'controller' => ParticipantesRifaController::class], function () {

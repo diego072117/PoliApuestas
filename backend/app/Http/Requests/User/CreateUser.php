@@ -23,6 +23,9 @@ class CreateUser extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
+            'secondName' => ['nullable','string'],
+            'lastName' => ['required', 'string'],
+            'secondLastName' => ['nullable','string'],
             'tipoDocumento' => ['required', 'string'],
             'numeroDocumento' => ['required', 'numeric', 'unique:usuarios'],
             'email' =>  ['required', 'email', 'unique:usuarios'],
@@ -38,6 +41,13 @@ class CreateUser extends FormRequest
         return [
             'name.required' => 'El nombre es requerido.',
             'name.string' => 'El nombre debe ser una cadena de texto.',
+
+            'secondName.string' => 'El segundo nombre debe ser una cadena de texto.',
+
+            'lastName.required' => 'El apellido es requerido.',
+            'lastName.string' => 'El apellido debe ser una cadena de texto.',
+
+            'secondLastName.string' => 'El segundo apellido debe ser una cadena de texto.',
 
             'tipoDocumento.required' => 'El tipo de documento es requerido.',
             'tipoDocumento.string' => 'El tipo de documento debe ser una cadena de texto.',
