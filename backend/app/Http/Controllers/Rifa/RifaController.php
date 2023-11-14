@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Rifa\CreateRifa;
 use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Rifas\Rifas;
+use App\Models\Usuarios\Usuario;
 use Illuminate\Http\Request;
 
 class RifaController extends Controller
@@ -22,10 +23,21 @@ class RifaController extends Controller
 
     public function getAllRifas()
     {
-        $rifas = Rifas::all();
+        // Obtener todas las rifas
+        $rifas = Rifas::where('estado', 'activa')->get();
+
+        // Iterar sobre cada rifa y obtener la información del usuario creador
+        foreach ($rifas as $rifa) {
+            $idUsuarioCreador = $rifa->id_usuarioCreador;
+
+            // Buscar el usuario por su ID
+            $usuarioCreador = Usuario::find($idUsuarioCreador);
+
+            // Agregar la información del usuario creador a la rifa
+            $rifa->usuarioCreador = $usuarioCreador;
+        }
 
         return response()->json($rifas, 200);
-        //return response()->json(['rifas' => $rifas], 200);
     }
 
     public function getRifaById($id)
@@ -33,10 +45,25 @@ class RifaController extends Controller
         $rifa = Rifas::find($id);
 
         if ($rifa) {
+            $idUsuarioCreador = $rifa->id_usuarioCreador;
+
+            $usuarioCreador = Usuario::find($idUsuarioCreador);
+
+            $rifa->usuarioCreador = $usuarioCreador;
             return response()->json($rifa, 200);
         } else {
             return response()->json(['message' => 'Rifa no encontrada'], 404);
         }
+    }
+
+    public function listarRifasUsuarioCreador($id_usuario)
+    {
+
+        // Busca todas las rifas donde el id_usuarioCreador sea igual al ID del usuario autenticado
+        $rifas = Rifas::where('id_usuarioCreador', $id_usuario)->get();
+
+        // Retorna las rifas encontradas
+        return response()->json($rifas);
     }
 
     public function getBoletasDisponibles($idRifa)
@@ -68,10 +95,7 @@ class RifaController extends Controller
         // Obtener dos números de boleta aleatorios
         $ganador1 = $participantes->random()->numeroBoleta;
         $ganador2 = $participantes->where('numeroBoleta', '!=', $ganador1)->random()->numeroBoleta;
-        //$ganador2 = $participantes->random()->numeroBoleta;
-
-        dd('ganador1',$ganador1,'ganador2',$ganador2);
-
+        
         // Guardar los ganadores en la tabla Rifas
         $rifa = Rifas::find($idRifa);
         $rifa->primerGanador = $ganador1;

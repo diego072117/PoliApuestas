@@ -1,0 +1,87 @@
+.container-details {
+  display: flex;
+  justify-content: center;
+  margin: 1.5em;
+
+  .details-rifa {
+    width: 40em;
+    font-family: cursive;
+    border: 1px solid #464646;
+    color: #fff;
+    margin: 10px;
+
+    .header-details {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+      font-size: 15px;
+      background-color: #181c24;
+      .boletas-disponibles {
+      }
+    }
+    .info-rifa-container {
+      display: flex;
+      margin: 1em;
+      justify-content: center;
+
+      .info-creador-details {
+        border-left: 1px solid #464646;
+        padding: 0 10px;
+        margin: 0 5px;
+        margin-bottom: 10px;
+      }
+    }
+    .premios-rifa {
+      display: flex;
+      justify-content: center;
+      .premio-one,
+      .premio-two {
+        margin: 1em;
+        p {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}
+
+.text-info-rifa {
+  color: #7d8590;
+  margin: 0 5px;
+}
+
+.container-img-premio {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    height: 15em;
+    width: 15em;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+}
+
+.scroll-participantes {
+  max-height: 30em;
+  overflow-y: auto;
+}
+
+.participantes-rifa {
+  margin: 1em;
+  font-family: cursive;
+  border-bottom: 1px solid #464646;
+  .info-participant {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 20px;
+    }
+  }
+  .documet-participant {
+    margin: 10px 0;
+    color: #817f7f;
+  }
+}

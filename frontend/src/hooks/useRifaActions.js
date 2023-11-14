@@ -1,5 +1,11 @@
 import { useDispatch } from "react-redux";
-import { createRifaAsync, getBoletasDisponiblesAsync, listRifaByIdAsync, listRifasAsync } from "../store/rifas/slice";
+import {
+  createRifaAsync,
+  getBoletasDisponiblesAsync,
+  listRifaByIdAsync,
+  listRifasAsync,
+  listRifasUsuarioCreadorAsync,
+} from "../store/rifas/slice";
 
 export const useRifaActions = () => {
   const dispatch = useDispatch();
@@ -9,6 +15,9 @@ export const useRifaActions = () => {
   };
   const listRifas = () => {
     dispatch(listRifasAsync());
+  };
+  const listRifasUsuCreador = (id) => {
+    dispatch(listRifasUsuarioCreadorAsync(id));
   };
 
   const getRifaById = (id) => {
@@ -24,5 +33,6 @@ export const useRifaActions = () => {
     listRifas,
     getRifaById,
     getBoletasDisponibles,
+    listRifasUsuCreador,
   };
 };

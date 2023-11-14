@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 
 const initialState = {
   rifas: [],
+  rifasCreador: [],
   boletasDisponibles: [],
   rifaById: null,
   status: "idle",
@@ -43,6 +44,20 @@ export const listRifaByIdAsync = createAsyncThunk(
     try {
       const response = await axios.get(
         `http://127.0.0.1:8000/api/Rifa/GetRifa/${id}`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
+export const listRifasUsuarioCreadorAsync = createAsyncThunk(
+  "rifa/listRifaUsuarioCreador",
+  async (id) => {
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/Rifa/GetAllRifasUsuarioCreador/${id}`
       );
       return response.data;
     } catch (error) {
@@ -99,6 +114,17 @@ const rifaSlice = createSlice({
         state.rifas = action.payload;
       })
       .addCase(listRifasAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      .addCase(listRifasUsuarioCreadorAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(listRifasUsuarioCreadorAsync.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.rifasCreador = action.payload;
+      })
+      .addCase(listRifasUsuarioCreadorAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
       })

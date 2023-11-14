@@ -1,8 +1,7 @@
 // useParticipanteRifaActions.js
 
 import { useDispatch } from "react-redux";
-import { registrarParticipanteAsync } from "../store/participanteRifa/slice";
-
+import { obtenerParticipantesPorRifaAsync, registrarParticipanteAsync } from "../store/participanteRifa/slice";
 
 export const useParticipanteRifaActions = () => {
   const dispatch = useDispatch();
@@ -11,7 +10,12 @@ export const useParticipanteRifaActions = () => {
     dispatch(registrarParticipanteAsync(participanteData));
   };
 
+  const obtenerParticipantesPorRifa = (idRifa) => {
+    dispatch(obtenerParticipantesPorRifaAsync(idRifa));
+  };
+
   return {
     registrarParticipante,
+    obtenerParticipantesPorRifa,
   };
 };

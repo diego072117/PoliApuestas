@@ -16,7 +16,12 @@ class ParticipantesRifaController extends Controller
 
         $usuario = Usuario::findOrFail($request->id_usuario);
 
-        $montoTransaccion = $usuario->transaccion->monto_transaccion;
+
+        if ($usuario->transaccion && $usuario->transaccion->monto_transaccion) {
+            $montoTransaccion = $usuario->transaccion->monto_transaccion;
+        } else {
+            return response()->json(['mensaje' => 'Recarga tu cuenta para participar en la rifa'], 403);
+        }
 
         $rifa = Rifas::findOrFail($request->id_rifa);
 
@@ -43,7 +48,24 @@ class ParticipantesRifaController extends Controller
                 'error' => 'No tienes suficiente saldo para comprar la boleta',
                 'saldo_actual' => $saldoActual,
                 'costo_boleta' => $costoBoleta,
-            ], 403); 
+            ], 403);
         }
+    }
+    public function getParticipantesPorRifa($idRifa)
+    {
+        // Buscar participantes de la rifa
+        $participantes = Participanterifa::where('id_rifa', $idRifa)->get();
+
+        foreach ($participantes as $participante) {
+            $idUsuarioParticipante = $participante->id_usuario;
+
+            // Buscar el usuario por su ID
+            $usuarioParticipante = Usuario::find($idUsuarioParticipante);
+
+            // Agregar la información del usuario creador a la rifa
+            $participante->usuarioParticipante = $usuarioParticipante;
+        }
+
+        return response()->json($participantes, 200);
     }
 }
