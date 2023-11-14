@@ -5,6 +5,7 @@ import {
   listRifaByIdAsync,
   listRifasAsync,
   listRifasUsuarioCreadorAsync,
+  seleccionarGanadoresAsync,
 } from "../store/rifas/slice";
 
 export const useRifaActions = () => {
@@ -28,11 +29,16 @@ export const useRifaActions = () => {
     dispatch(getBoletasDisponiblesAsync(idRifa));
   };
 
+  const seleccionarGanadores = (idRifa) => {
+    dispatch(seleccionarGanadoresAsync(idRifa));
+  };
+
   return {
     createRifa,
     listRifas,
     getRifaById,
     getBoletasDisponibles,
     listRifasUsuCreador,
+    seleccionarGanadores,
   };
 };

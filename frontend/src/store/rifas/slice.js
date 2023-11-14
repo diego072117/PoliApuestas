@@ -9,6 +9,7 @@ const initialState = {
   rifaById: null,
   status: "idle",
   error: null,
+  mensaje: null,
 };
 
 export const createRifaAsync = createAsyncThunk(
@@ -76,6 +77,20 @@ export const getBoletasDisponiblesAsync = createAsyncThunk(
       return response.data;
     } catch (error) {
       throw new Error(error.message);
+    }
+  }
+);
+
+export const seleccionarGanadoresAsync = createAsyncThunk(
+  "rifas/seleccionarGanadores",
+  async (idRifa) => {
+    try {
+      const response = await axios.post(
+        `http://127.0.0.1:8000/api/Rifa/SeleccionarGanadores/${idRifa}`
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.mensaje);
     }
   }
 );
@@ -149,6 +164,29 @@ const rifaSlice = createSlice({
       .addCase(getBoletasDisponiblesAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(seleccionarGanadoresAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(seleccionarGanadoresAsync.fulfilled, (state) => {
+        state.status = "succeeded";
+        Swal.fire({
+          icon: "success",
+          title: "Ganadores seleccionados exitosamente",
+          text: "Los ganadores se han seleccionado exitosamente.",
+        }).then(() => {
+          window.location.reload();
+        });
+      })
+      .addCase(seleccionarGanadoresAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+        state.mensaje = action.error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: action.error.message,
+        });
       });
   },
 });
