@@ -58,7 +58,7 @@ export const Nav = () => {
           <Link to="/dashboard" className="item-nav color-one">
             <i className="fa-brands fa-twitch"></i> Dasboard
           </Link>
-          <Link to="#" className="item-nav color-one">
+          <Link to="historialParticipante" className="item-nav color-one">
             <i className="fa-brands fa-twitch"></i> Historial
           </Link>
           {isUserRolOrganizador() && (

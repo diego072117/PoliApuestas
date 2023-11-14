@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 import { useValidators } from "../../hooks/useValidations";
 import { Link } from "react-router-dom";
 
-import "./Module.scss";
-
 export const ListRifas = () => {
   const rifas = useSelector((state) => state.rifas.rifas);
   const rifasCreador = useSelector((state) => state.rifas.rifasCreador);
@@ -53,7 +51,8 @@ export const ListRifas = () => {
               <div className="rifa">
                 <div className="info-list">
                   <h2 className="title-rifa">{rifa.nombreRifa}</h2>
-                  <p className="creador">Tu rifa
+                  <p className="creador">
+                    Tu rifa
                     {/* {rifa.usuarioCreador.name} {rifa.usuarioCreador.lastName} */}
                   </p>
                 </div>

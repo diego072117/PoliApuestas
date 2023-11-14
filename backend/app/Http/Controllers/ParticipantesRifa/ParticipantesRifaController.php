@@ -68,4 +68,35 @@ class ParticipantesRifaController extends Controller
 
         return response()->json($participantes, 200);
     }
+
+    public function getHistorialParticipante($id_usuario)
+    {
+        $participaciones = Participanterifa::where('id_usuario', $id_usuario)->get();
+        $historial = [];
+
+        foreach ($participaciones as $participacion) {
+            $idRifa = $participacion->id_rifa;
+
+            // Verificar si la rifa ya está en el historial
+            $rifaEnHistorial = array_filter($historial, function ($item) use ($idRifa) {
+                return $item['historialRifa']['id'] == $idRifa;
+            });
+
+            if (empty($rifaEnHistorial)) {
+                $rifa = Rifas::find($idRifa);
+
+                $usuarioCreador = Usuario::find($rifa->id_usuarioCreador);
+
+                // Si la rifa no está en el historial, agregarla
+                $historial[] = [
+                    'id_usuario' => $id_usuario,
+                    'id_rifa' => $idRifa,
+                    'historialRifa' => Rifas::find($idRifa),
+                    'usuarioCreador' => $usuarioCreador,
+                ];
+            }
+        }
+
+        return response()->json($historial, 200);
+    }
 }
