@@ -16,9 +16,10 @@ export const DetallesRifa = () => {
   );
   const [numeroBoletaSeleccionada, setNumeroBoletaSeleccionada] = useState("");
   const { getRifaById, getBoletasDisponibles } = useRifaActions();
-  const { isUserRolParticipante } = useValidators();
+  const { isUserRolParticipante, isUserRolOrganizador } = useValidators();
   const { registrarParticipante, obtenerParticipantesPorRifa } =
     useParticipanteRifaActions();
+  const { seleccionarGanadores } = useRifaActions();
 
   const boletasDisponibles = useSelector(
     (state) => state.rifas.boletasDisponibles
@@ -46,6 +47,10 @@ export const DetallesRifa = () => {
         text: "Elije el numero de tu boleta",
       });
     }
+  };
+
+  const handleSeleccionarGanadores = () => {
+    seleccionarGanadores(id);
   };
 
   return (
@@ -81,6 +86,11 @@ export const DetallesRifa = () => {
                 )}
               </div>
             )}
+            {isUserRolOrganizador() && (
+              <button onClick={handleSeleccionarGanadores}>
+                Seleccionar Ganadores
+              </button>
+            )}
           </div>
           <div className="info-rifa-container">
             <div className="info-rifa-details">
@@ -96,15 +106,15 @@ export const DetallesRifa = () => {
                 <span className="text-info-rifa">{rifa.valorBoleta}</span>
               </p>
               <p>
-                Primer ganador:
+                Boleta ganadora:
                 <span className="text-info-rifa">
-                  {rifa.primerGanador ? rifa.primerGanador : "Por definir"}
+                  # {rifa.primerGanador ? rifa.primerGanador : "Por definir"}
                 </span>
               </p>
               <p>
-                Segundo ganador:
+                Boleta ganadora:
                 <span className="text-info-rifa">
-                  {rifa.segundoGanador ? rifa.segundoGanador : "Por definir"}
+                  # {rifa.segundoGanador ? rifa.segundoGanador : "Por definir"}
                 </span>
               </p>
             </div>
