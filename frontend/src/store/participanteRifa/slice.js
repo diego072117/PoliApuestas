@@ -8,7 +8,7 @@ const initialState = {
   participantes: [],
   status: "idle",
   error: null,
-  mensaje: null, 
+  mensaje: null,
 };
 
 export const registrarParticipanteAsync = createAsyncThunk(
@@ -23,6 +23,21 @@ export const registrarParticipanteAsync = createAsyncThunk(
       return response.data;
     } catch (error) {
       throw new Error(error.response.data.mensaje);
+    }
+  }
+);
+
+export const obtenerParticipantesPorRifaAsync = createAsyncThunk(
+  "participanteRifa/obtenerParticipantesPorRifa",
+  async (idRifa) => {
+    try {
+      const response = await axios.get(
+        `http://127.0.0.1:8000/api/Participantes/InfoParticipantes/${idRifa}`
+      );
+
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response.data.message);
     }
   }
 );
@@ -53,6 +68,17 @@ const participanteRifaSlice = createSlice({
           title: "Error",
           text: action.error.message,
         });
+      })
+      .addCase(obtenerParticipantesPorRifaAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(obtenerParticipantesPorRifaAsync.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.participantes = action.payload;
+      })
+      .addCase(obtenerParticipantesPorRifaAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
   },
 });
