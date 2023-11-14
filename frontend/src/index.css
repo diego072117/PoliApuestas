@@ -21,3 +21,15 @@ p,h2{
 ::-webkit-scrollbar-thumb {
   background-color: #888; 
 }
+
+.container-dash {
+  margin: 3em 10em;
+  display: flex;
+}
+
+.info-rifas-dash{
+  margin: 0 3em;
+  width: 100%; 
+  max-width: 40em;
+}
+
