@@ -12,7 +12,7 @@ export const Nav = () => {
     <nav className="container-nav">
       <div className="user-info-nav">
         <div className="options-nav">
-          <i className="fa-brands fa-github logo-nav"></i>
+          <i className="fa-solid fa-earth-americas logo-nav"></i>
           {!isUserAuthenticated() && (
             <>
               <Link to="/" className="item-nav">
