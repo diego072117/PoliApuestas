@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { UseUserActions } from "../../hooks/UseUserActions";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import "./Module.scss";
 
 export const Login = () => {
   const { LoginUser } = UseUserActions();
@@ -31,28 +32,37 @@ export const Login = () => {
   }, [user]);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Correo Electrónico:</label>
+    <div className="container-login">
+      <div className="login">
+        <div className="info-login">
+          <i className="fa-solid fa-earth-americas"></i>
+          <h2>Sign in to PoliApuestas</h2>
+        </div>
+
+        <form className="form-login" onSubmit={handleSubmit}>
+          <label className="title-input">Email:</label>
           <input
             type="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
+            className="form-input"
           />
-        </div>
-        <div>
-          <label>Contraseña:</label>
+
+          <label className="title-input">Password:</label>
           <input
             type="password"
             name="password"
             value={formData.password}
             onChange={handleInputChange}
+            className="form-input"
           />
-        </div>
-        <button type="submit">Iniciar Sesión</button>
-      </form>
+
+          <button className="button-login" type="submit">
+            Sign in
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
