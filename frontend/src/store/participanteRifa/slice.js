@@ -57,6 +57,8 @@ const participanteRifaSlice = createSlice({
           icon: "success",
           title: "Compra realizda",
           text: "Ahora estas participando en esta rifa.",
+        }).then(() => {
+          window.location.reload();
         });
       })
       .addCase(registrarParticipanteAsync.rejected, (state, action) => {
