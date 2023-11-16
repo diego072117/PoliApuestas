@@ -4,7 +4,6 @@ use App\Http\Controllers\ParticipantesRifa\ParticipantesRifaController;
 use App\Http\Controllers\Rifa\RifaController;
 use App\Http\Controllers\Transaccion\TransaccionController;
 use App\Http\Controllers\Usuario\Usuariocontroller;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*

@@ -5,7 +5,8 @@ import "./Module.scss";
 import { useSelector } from "react-redux";
 
 export const Nav = () => {
-  const { isUserAuthenticated, isUserRolOrganizador } = useValidators();
+  const { isUserAuthenticated, isUserRolOrganizador, isUserRolParticipante } =
+    useValidators();
   const { LogoutUser } = UseUserActions();
   const user = useSelector((state) => state.users.auth.user);
   return (
@@ -58,17 +59,19 @@ export const Nav = () => {
           <Link to="/dashboard" className="item-nav color-one">
             <i className="fa-brands fa-twitch"></i> Dasboard
           </Link>
-          <Link to="historialParticipante" className="item-nav color-one">
-            <i className="fa-brands fa-twitch"></i> Historial
-          </Link>
+          {isUserRolParticipante() && (
+            <Link to="historialParticipante" className="item-nav color-one">
+              <i className="fa-brands fa-twitch"></i> Historial
+            </Link>
+          )}
           {isUserRolOrganizador() && (
             <Link to="/rifa" className="item-nav color-one">
               <i className="fa-brands fa-twitch"></i> Crear rifas
             </Link>
           )}
-          <Link to="/perfil" className="item-nav color-one">
+          {/* <Link to="/perfil" className="item-nav color-one">
             <i className="fa-brands fa-twitch"></i> Perfil
-          </Link>
+          </Link> */}
         </div>
       )}
     </nav>
