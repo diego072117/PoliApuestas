@@ -118,4 +118,6 @@ class UsuarioControllerTest extends TestCase
             ->assertJson(['message' => 'Credenciales incorrectas']);
     }
 
+    
+
 }
