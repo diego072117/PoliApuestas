@@ -157,7 +157,7 @@ export const DetallesRifa = () => {
               <div className="container-img-premio">
                 <img
                   className="premio-details"
-                  src="https://i.pinimg.com/236x/a1/43/a0/a143a0dbcb293bdbf2f5c9a1c4d441c2.jpg"
+                  src={`http://127.0.0.1:8000/storage/${rifa.primerPremio}`}
                   alt=""
                 />
               </div>
@@ -167,7 +167,7 @@ export const DetallesRifa = () => {
               <div className="container-img-premio">
                 <img
                   className="premio-details"
-                  src="https://i.pinimg.com/564x/48/c9/f5/48c9f581bc2ea07e2934273e9def5135.jpg"
+                  src={`http://127.0.0.1:8000/storage/${rifa.segundoPremio}`}
                   alt=""
                 />
               </div>

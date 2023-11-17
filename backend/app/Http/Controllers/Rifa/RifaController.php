@@ -8,6 +8,7 @@ use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Rifas\Rifas;
 use App\Models\Usuarios\Usuario;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class RifaController extends Controller
 {
@@ -15,9 +16,23 @@ class RifaController extends Controller
     {
         $validatedData = $request->validated();
 
-        $rifa = new Rifas($validatedData);
+        // Almacena la imagen del primer premio
+        if ($request->hasFile('primerPremio')) {
+            $primerPremio = $request->file('primerPremio');
+            $primerPremioPath = $primerPremio->storeAs('premios', 'primer_premio_' . time() . '.' . $primerPremio->getClientOriginalExtension(), 'public');
+            $validatedData['primerPremio'] = $primerPremioPath;
+        }
 
+        // Almacena la imagen del segundo premio
+        if ($request->hasFile('segundoPremio')) {
+            $segundoPremio = $request->file('segundoPremio');
+            $segundoPremioPath = $segundoPremio->storeAs('premios', 'segundo_premio_' . time() . '.' . $segundoPremio->getClientOriginalExtension(), 'public');
+            $validatedData['segundoPremio'] = $segundoPremioPath;
+        }
+
+        $rifa = new Rifas($validatedData);
         $rifa->save();
+
         return response()->json(['message' => 'Rifa creada con éxito'], 201);
     }
 

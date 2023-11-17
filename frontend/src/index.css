@@ -22,8 +22,9 @@ p,h2{
 }
 
 .container-dash {
-  margin: 3em 10em;
   display: flex;
+  justify-content: center;
+  margin: 2em 0;
 }
 
 .info-rifas-dash{

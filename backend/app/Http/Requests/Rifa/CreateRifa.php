@@ -27,8 +27,8 @@ class CreateRifa extends FormRequest
             'id_usuarioCreador' => ['required', 'integer'],
             'boletasTotales' => ['required', 'integer'],
             'valorBoleta' => ['required', 'integer'],
-            'primerPremio' => ['string'],
-            'segundoPremio' => ['string'],
+            'primerPremio' => ['required'],
+            'segundoPremio' => ['required'],
             'estado' => ['string'],
             'primerGanador' => ['integer', 'nullable'],
             'segundoGanador' => ['integer', 'nullable'],
@@ -52,9 +52,9 @@ class CreateRifa extends FormRequest
             'valorBoleta.required' => 'El valor de la boleta es requerido.',
             'valorBoleta.integer' => 'El valor de la boleta debe ser un número entero válido.',
 
-            'primerPremio.string' => 'El primer premio debe ser una cadena de texto.',
+            'primerPremio.required' => 'El primer premio es requerido.',
 
-            'segundoPremio.string' => 'El segundo premio debe ser una cadena de texto.',
+            'segundoPremio.required' => 'El segundo premio es requerido.',
 
             'estado.string' => 'El estado de la rifa debe ser una cadena de texto.',
 
