@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ParticipantesRifa\ParticipantesRifa;
 use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Rifas\Rifas;
+use App\Models\Transaccion\Transaccion;
 use App\Models\Usuarios\Usuario;
 use Illuminate\Http\Request;
 
@@ -13,9 +14,7 @@ class ParticipantesRifaController extends Controller
 {
     public function newParticipante(ParticipantesRifa $request)
     {
-
         $usuario = Usuario::findOrFail($request->id_usuario);
-
 
         if ($usuario->transaccion && $usuario->transaccion->monto_transaccion) {
             $montoTransaccion = $usuario->transaccion->monto_transaccion;
@@ -24,11 +23,9 @@ class ParticipantesRifaController extends Controller
         }
 
         $rifa = Rifas::findOrFail($request->id_rifa);
-
         $costoBoleta = $rifa->valorBoleta;
 
         if ($montoTransaccion >= $costoBoleta) {
-
             // Calcula el nuevo valor del campo monto_transaccion
             $nuevoMontoTransaccion = $montoTransaccion - $costoBoleta;
 
@@ -39,10 +36,23 @@ class ParticipantesRifaController extends Controller
             $participante = $request->all();
             Participanterifa::create($participante);
 
+            // Actualiza el saldo del usuario creador de la rifa
+            $usuarioCreador = Usuario::find($rifa->id_usuarioCreador);
+
+            if ($usuarioCreador) {
+                $montoActualUsuarioCreador = $usuarioCreador->transaccion->monto_transaccion ?? 0;
+                $nuevoMontoUsuarioCreador = $montoActualUsuarioCreador + $costoBoleta;
+
+                if ($usuarioCreador->transaccion) {
+                    $usuarioCreador->transaccion->update(['monto_transaccion' => $nuevoMontoUsuarioCreador]);
+                } else {
+                    Transaccion::create(['id_usuario' => $usuarioCreador->id, 'monto_transaccion' => $costoBoleta]);
+                }
+            }
+
             return response()->json(['mensaje' => 'Tu compra fue realizada exitosamente']);
         } else {
             $saldoActual = $usuario->transaccion->monto_transaccion;
-
             return response()->json([
                 'mensaje' => 'Saldo insuficiente',
                 'error' => 'No tienes suficiente saldo para comprar la boleta',
