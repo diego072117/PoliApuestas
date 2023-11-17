@@ -26,6 +26,7 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
 
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
     Route::post('/{id_usuario}', 'createTransaccion');
+    Route::get('/SaldoUsuario/{id_usuario}', 'obtenerTransaccionPorIdUsuario');
 });
 
 Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], function () {

@@ -1,5 +1,8 @@
 import { useDispatch } from "react-redux";
-import { createTransactionAsync } from "../store/transaccion/slice";
+import {
+  createTransactionAsync,
+  getTransactionByIdAsync,
+} from "../store/transaccion/slice";
 
 export const useTransaccion = () => {
   const dispatch = useDispatch();
@@ -8,5 +11,9 @@ export const useTransaccion = () => {
     dispatch(createTransactionAsync(transaccionData));
   };
 
-  return { NewTransaccion };
+  const getSaldoUser = (id) => {
+    dispatch(getTransactionByIdAsync(id));
+  };
+
+  return { NewTransaccion, getSaldoUser };
 };
