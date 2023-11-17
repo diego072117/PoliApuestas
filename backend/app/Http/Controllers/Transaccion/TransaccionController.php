@@ -37,4 +37,16 @@ class TransaccionController extends Controller
             return response()->json(['message' => 'Recarga exitosa'], 201);
         }
     }
+    
+    public function obtenerTransaccionPorIdUsuario($id_usuario)
+    {
+        // Buscar la transacción basada en el ID del usuario
+        $transaccion = Transaccion::where('id_usuario', $id_usuario)->first();
+
+        if ($transaccion) {
+            return response()->json($transaccion, 200);
+        } else {
+            return response()->json(['message' => 'No se encontró una transacción para este usuario'], 404);
+        }
+    }
 }
