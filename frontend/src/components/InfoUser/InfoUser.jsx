@@ -19,6 +19,7 @@ export const InfoUser = () => {
           <p className="email-user">{user.email}</p>
           <p className="document-user">{user.tipoDocumento}: {user.numeroDocumento}</p>
           <p className="tel-user">Tel: {user.telefono}</p>
+          <p className="tel-user">Rol: {user.rol}</p>
         </div>
         <Link to="#" className="button-user">
           Editar perfil

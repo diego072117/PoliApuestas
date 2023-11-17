@@ -40,10 +40,10 @@ export const Nav = () => {
           {!isUserAuthenticated() && (
             <>
               <Link to="/register" className="item-nav sing-in">
-                Sign in
+                Sign up
               </Link>
               <Link to="/login" className="item-nav sing-up">
-                Sign up
+                Sign in
               </Link>
             </>
           )}
