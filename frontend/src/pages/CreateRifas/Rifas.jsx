@@ -11,23 +11,38 @@ export const Rifa = () => {
     id_usuarioCreador: user.id,
     boletasTotales: "",
     valorBoleta: "",
-    primerPremio: "",
-    segundoPremio: "",
+    primerPremio: null,
+    segundoPremio: null,
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createRifa(formData);
+
+    const formDataToSend = new FormData();
+
+    for (const key in formData) {
+      if (formData[key] !== null && formData[key] !== undefined) {
+        formDataToSend.append(key, formData[key]);
+      }
+    }
+
+    createRifa(formDataToSend);
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setFormData({ ...formData, [name]: files[0] });
+  };
+
   return (
     <div>
       <h2>Crear Nueva Rifa</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} encType="multipart/form-data">
         <div>
           <label>Nombre de la Rifa:</label>
           <input
@@ -69,22 +84,12 @@ export const Rifa = () => {
 
         <div>
           <label>Primer Premio:</label>
-          <input
-            type="text"
-            name="primerPremio"
-            value={formData.primerPremio}
-            onChange={handleInputChange}
-          />
+          <input type="file" name="primerPremio" onChange={handleFileChange} />
         </div>
 
         <div>
           <label>Segundo Premio:</label>
-          <input
-            type="text"
-            name="segundoPremio"
-            value={formData.segundoPremio}
-            onChange={handleInputChange}
-          />
+          <input type="file" name="segundoPremio" onChange={handleFileChange} />
         </div>
 
         <button type="submit">Crear Rifa</button>
