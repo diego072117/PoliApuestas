@@ -8,6 +8,7 @@ export const InfoUser = () => {
   const user = useSelector((state) => state.users.auth.user);
   const saldo = useSelector((state) => state.transaccion.saldoUser);
   const { getSaldoUser } = useTransaccion();
+  
   useEffect(() => {
     getSaldoUser(user.id);
   }, []);

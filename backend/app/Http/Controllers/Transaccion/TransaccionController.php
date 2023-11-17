@@ -46,7 +46,7 @@ class TransaccionController extends Controller
         if ($transaccion) {
             return response()->json($transaccion, 200);
         } else {
-            return response()->json(['message' => 'No se encontró una transacción para este usuario'], 404);
+            return 0;
         }
     }
 }
