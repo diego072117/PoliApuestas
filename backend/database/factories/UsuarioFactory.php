@@ -20,7 +20,7 @@ class UsuarioFactory extends Factory
             'tipoDocumento' => 'CC',
             'numeroDocumento' => $this->faker->unique()->randomNumber(8),
             'email' => $this->faker->unique()->safeEmail,
-            'rol' => 'Participante', // Ajusta según tu lógica
+            'rol' => 'Participante',
             'telefono' => '3206957847',
             'password' => bcrypt('password'),
         ];
