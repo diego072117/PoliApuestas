@@ -18,13 +18,7 @@ class ParticipanteFactory extends Factory
         return [
             'id_usuario' => UsuarioFactory::new()->create()->id,
             'id_rifa' => RifaFactory::new()->create()->id,
-            'numeroBoleta' => '5'
+            'numeroBoleta' => $this->faker->numberBetween(1, 100),
         ];
-    }
-    public function configure()
-    {
-        return $this->afterCreating(function (Participanterifa $participante) {
-            // Puedes realizar acciones adicionales después de crear el participante si es necesario
-        });
     }
 }
