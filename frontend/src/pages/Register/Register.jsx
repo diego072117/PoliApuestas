@@ -44,7 +44,7 @@ export const Register = () => {
                 name="name"
                 value={formData.name}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
 
               <label>Segundo Nombre:</label>
@@ -53,14 +53,14 @@ export const Register = () => {
                 name="secondName"
                 value={formData.secondName}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
               <label>Tipo Documento:</label>
               <select
                 name="tipoDocumento"
                 value={formData.tipoDocumento}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               >
                 <option value="CC">CC</option>
                 <option value="TI">TI</option>
@@ -72,14 +72,14 @@ export const Register = () => {
                 name="email"
                 value={formData.email}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
               <label>Rol:</label>
               <select
                 name="rol"
                 value={formData.rol}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               >
                 <option value="participante">Participante</option>
                 <option value="organizador">Organizador</option>
@@ -92,7 +92,7 @@ export const Register = () => {
                 name="lastName"
                 value={formData.lastName}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
 
               <label>Segundo Apellido</label>
@@ -101,7 +101,7 @@ export const Register = () => {
                 name="secondLastName"
                 value={formData.secondLastName}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
               <label>Número de documento:</label>
               <input
@@ -109,7 +109,7 @@ export const Register = () => {
                 name="numeroDocumento"
                 value={formData.numeroDocumento}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
               <label>Contraseña:</label>
               <input
@@ -117,7 +117,7 @@ export const Register = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
               <label>Teléfono:</label>
               <input
@@ -125,12 +125,14 @@ export const Register = () => {
                 name="telefono"
                 value={formData.telefono}
                 onChange={handleInputChange}
-                className="input-register"
+                className="form-input"
               />
             </div>
           </div>
 
-          <button className="button-register" type="submit">Registrarse</button>
+          <button className="button-register" type="submit">
+            Registrarse
+          </button>
         </form>
       </div>
     </div>

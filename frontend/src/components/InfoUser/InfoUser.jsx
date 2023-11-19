@@ -34,7 +34,7 @@ export const InfoUser = () => {
             Saldo: {saldo ? saldo.monto_transaccion : 0}
           </p>
         </div>
-        <Link to="#" className="button-user">
+        <Link to="/updateProfile" className="button-user">
           Editar perfil
         </Link>
         <p className="boletas">

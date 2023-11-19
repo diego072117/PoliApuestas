@@ -1,22 +1,9 @@
-.container-register {
+.container-perfil {
   display: flex;
   justify-content: center;
-
-  .register {
+  .perfil {
     width: 30em;
-    .info-login {
-      text-align: center;
-      color: #fff;
-      font-family: monospace;
-      margin: 2em 0 1em;
-      i {
-        font-size: 2em;
-      }
-      h2 {
-        margin: 1em 0;
-      }
-    }
-    .form-register {
+    .info-perfil {
       color: #fff;
       display: flex;
       flex-direction: column;
@@ -25,7 +12,16 @@
       font-family: monospace;
       padding: 1em;
       border-radius: 5px;
-      .button-register {
+      margin: 1em 0;
+      .image-perfil {
+        text-align: center;
+        img {
+          width: 15em;
+          border-radius: 50%;
+          border: 2px solid #817f7f;
+        }
+      }
+      .button-update {
         background-color: #238636;
         padding: 6px 16px;
         margin: 16px 25px 8px;
@@ -34,9 +30,22 @@
         color: #fff;
         font-weight: 600;
       }
+      .rol {
+        display: flex;
+        flex-direction: column;
+        margin: -1.5em 1em;
+        padding: 1em;
+
+        label {
+          font-size: 14px;
+        }
+        @media (max-width: 505px) {
+          margin: -1.5em 0;
+        }
+      }
     }
-    .col-one,
-    .col-two {
+    .col-one-perfil,
+    .col-two-perfil {
       display: flex;
       flex-direction: column;
       margin: 1em;
@@ -48,24 +57,10 @@
   }
 }
 
-.form-input {
-  color: #fff;
-  background-color: #0d1117;
-  border: 1px solid #464646;
-  border-radius: 5px;
-  outline: none;
-  padding: 5px 12px;
-  margin: 4px 0 16px;
-
-  &:focus {
-    border: 1px solid #2f81f7;
-  }
-}
-
-.container-cols {
+.container-cols-perfil {
   display: flex;
   justify-content: center;
   @media (max-width: 505px) {
-  flex-direction: column;
+    flex-direction: column;
   }
 }

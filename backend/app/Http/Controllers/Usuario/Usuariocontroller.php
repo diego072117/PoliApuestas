@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Usuario;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\CreateUser;
+use App\Http\Requests\User\UpdateUser;
 use App\Models\Usuarios\Usuario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -21,6 +22,18 @@ class Usuariocontroller extends Controller
         Usuario::create($userData);
 
         return response()->json(['message' => 'Usuario registrado con éxito'], 201);
+    }
+
+    public function updateUser($id, UpdateUser $request)
+    {
+
+        // Obtener el usuario que deseas actualizar
+        $user = Usuario::findOrFail($id);
+
+        // Actualizar los campos necesarios
+        $user->update($request->all());
+
+        return $user;
     }
 
     public function getAllUsers()

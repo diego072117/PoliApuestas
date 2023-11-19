@@ -22,6 +22,7 @@ Route::group(['prefix' => 'Users', 'controller' => Usuariocontroller::class], fu
     Route::get('/GetAllUsers', 'getAllUsers');
     Route::get('/GetUser/{id}', 'getUserById');
     Route::post('/Login', 'loginUser');
+    Route::put('/UpdateUser/{id}', 'updateUser');
 });
 
 Route::group(['prefix' => 'Transaccion', 'controller' => TransaccionController::class], function () {
