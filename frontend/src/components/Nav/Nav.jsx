@@ -48,7 +48,7 @@ export const Nav = () => {
             </>
           )}
           {isUserAuthenticated() && (
-            <button className="sing-out item-nav" onClick={LogoutUser}>
+            <button className="sing-out item-nav logout-nav" onClick={LogoutUser}>
               Sign out
             </button>
           )}
@@ -69,9 +69,6 @@ export const Nav = () => {
               <i className="fa-brands fa-twitch"></i> Crear rifas
             </Link>
           )}
-          {/* <Link to="/perfil" className="item-nav color-one">
-            <i className="fa-brands fa-twitch"></i> Perfil
-          </Link> */}
         </div>
       )}
     </nav>
