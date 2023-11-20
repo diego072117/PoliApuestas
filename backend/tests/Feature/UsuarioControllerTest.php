@@ -31,6 +31,33 @@ class UsuarioControllerTest extends TestCase
     }
 
     /** @test */
+    public function puede_actualizar_un_usuario()
+    {
+        // Crear un usuario para la prueba
+        $usuario = UsuarioFactory::new()->create();
+
+        // Nuevos datos para actualizar el usuario
+        $nuevosDatos = [
+            'name' => 'NuevoNombre',
+            'lastName' => 'NuevoApellido',
+            'tipoDocumento' => 'CE',
+            'numeroDocumento' => '1001095877',
+            'email' => 'nuevo@correo.com',
+            'rol' => 'Organizador',
+            'telefono' => '3134592568',
+        ];
+
+        // Llamar a la ruta que actualiza al usuario
+        $response = $this->putJson('/api/Users/UpdateUser/' . $usuario->id, $nuevosDatos);
+
+        // Verificar que la respuesta sea exitosa
+        $response->assertStatus(200);
+
+        // Verificar que los datos del usuario se hayan actualizado correctamente
+        $response->assertJsonFragment($nuevosDatos);
+    }
+
+    /** @test */
     public function puede_obtener_todos_los_usuarios()
     {
         // Crear algunos usuarios para la prueba
@@ -117,7 +144,4 @@ class UsuarioControllerTest extends TestCase
         $response->assertStatus(401)
             ->assertJson(['message' => 'Credenciales incorrectas']);
     }
-
-    
-
 }

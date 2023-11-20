@@ -7,8 +7,6 @@ use App\Http\Requests\Rifa\CreateRifa;
 use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Rifas\Rifas;
 use App\Models\Usuarios\Usuario;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class RifaController extends Controller
 {

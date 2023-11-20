@@ -104,6 +104,38 @@ class RifaControllerTest extends TestCase
 
         // Verificar que la respuesta sea exitosa (código de estado 200)
         $response->assertStatus(200);
+    }
 
+    /** @test */
+    public function obtener_rifas_usuario_creador()
+    {
+        // Crear un usuario y una rifa para usar en la prueba
+        $usuario = UsuarioFactory::new()->create();
+        $rifas = RifaFactory::new()->count(3)->create(['id_usuarioCreador' => $usuario->id]);
+
+
+        // Realizar una solicitud GET a la ruta que maneja getBoletasDisponibles
+        $response = $this->getJson("/api/Rifa/GetAllRifasUsuarioCreador/{$usuario->id}");
+
+        // Verificar que la respuesta sea exitosa (código de estado 200)
+        $response->assertStatus(200);
+
+        // Verificar que la respuesta contiene las rifas asociadas al usuario
+        foreach ($rifas as $rifa) {
+            $response->assertJsonFragment(['id' => $rifa->id]);
+        }
+    }
+
+    /** @test */
+    public function puede_seleccionar_ganadores()
+    {
+        $usuario1 = UsuarioFactory::new()->create(['rol' => 'organizador']);
+        $rifa = RifaFactory::new()->create(['id_usuarioCreador' => $usuario1->id]);
+
+        ParticipanteFactory::new()->count(4)->create(['id_rifa' => $rifa->id]);
+        
+        $response = $this->postJson("/api/Rifa/SeleccionarGanadores/{$rifa->id}");
+      
+        $response->assertStatus(200);
     }
 }
