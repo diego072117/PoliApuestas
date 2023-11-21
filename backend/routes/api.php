@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Apuesta\ApuestaController;
+use App\Http\Controllers\ParticipanteApuesta\ParticipanteApuestaController;
 use App\Http\Controllers\ParticipantesRifa\ParticipantesRifaController;
 use App\Http\Controllers\Rifa\RifaController;
 use App\Http\Controllers\Transaccion\TransaccionController;
@@ -37,11 +39,23 @@ Route::group(['prefix' => 'Rifa', 'controller' => RifaController::class], functi
     Route::get('/GetBoletasDisponibles/{idRifa}', 'getBoletasDisponibles');
     Route::post('/SeleccionarGanadores/{idRifa}', 'seleccionarGanadores');
     Route::get('/GetAllRifasUsuarioCreador/{id}', 'listarRifasUsuarioCreador');
-
 });
 
 Route::group(['prefix' => 'Participantes', 'controller' => ParticipantesRifaController::class], function () {
     Route::post('/CreateParticipante', 'newParticipante');
     Route::get('/InfoParticipantes/{id}', 'getParticipantesPorRifa');
     Route::get('/HistorialUsurio/{id}', 'getHistorialParticipante');
+});
+
+Route::group(['prefix' => 'Apuestas', 'controller' => ApuestaController::class], function () {
+    Route::post('/CreateApuesta', 'newApuesta');
+    Route::get('/GetAllApuestas', 'getAllApuestas');
+    Route::get('/GetApuesta/{id}', 'getApuestaById');
+    Route::get('/GetAllApuestasUsuarioCreador/{id}', 'listarApuestasUsuarioCreador');
+});
+
+Route::group(['prefix' => 'ParticipantesApuesta', 'controller' => ParticipanteApuestaController::class], function () {
+    Route::post('/CreateParticipanteApuesta', 'newParticipanteApuesta');
+    Route::get('/InfoParticipantesApuesta/{id}', 'getParticipantesPorApuesta');
+    Route::get('/HistorialApuestasUsurio/{id}', 'getHistorialApuestasParticipante');
 });
