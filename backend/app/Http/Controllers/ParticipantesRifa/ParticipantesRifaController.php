@@ -8,7 +8,6 @@ use App\Models\ParticipanteRifa\Participanterifa;
 use App\Models\Rifas\Rifas;
 use App\Models\Transaccion\Transaccion;
 use App\Models\Usuarios\Usuario;
-use Illuminate\Http\Request;
 
 class ParticipantesRifaController extends Controller
 {

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useRifaActions } from "../../hooks/useRifaActions";
 import { useSelector } from "react-redux";
+import "./Module.scss";
 
 export const Rifa = () => {
   const user = useSelector((state) => state.users.auth.user);
@@ -40,60 +41,70 @@ export const Rifa = () => {
   };
 
   return (
-    <div>
-      <h2>Crear Nueva Rifa</h2>
-      <form onSubmit={handleSubmit} encType="multipart/form-data">
-        <div>
-          <label>Nombre de la Rifa:</label>
-          <input
-            type="text"
-            name="nombreRifa"
-            value={formData.nombreRifa}
-            onChange={handleInputChange}
-          />
+    <div className="container-create-rifa">
+      <div className="create-rifa">
+        <div className="title-create-rifa">
+          <h2>Crear rifa</h2>
         </div>
 
-        <div>
-          <label>Descripción:</label>
-          <input
-            name="descripcion"
-            value={formData.descripcion}
-            onChange={handleInputChange}
-          />
-        </div>
+        <form
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+          className="form-create-rifa"
+        >
+          <div className="container-cols-create-rifa">
+            <label>Nombre de la Rifa:</label>
+            <input
+              type="text"
+              name="nombreRifa"
+              value={formData.nombreRifa}
+              onChange={handleInputChange}
+              className="form-input"
+            />
+            <label>Descripción:</label>
+            <input
+              name="descripcion"
+              value={formData.descripcion}
+              onChange={handleInputChange}
+              className="form-input"
+            />
+            <label>Boletas Totales:</label>
+            <input
+              type="number"
+              name="boletasTotales"
+              value={formData.boletasTotales}
+              onChange={handleInputChange}
+              className="form-input"
+            />
 
-        <div>
-          <label>Boletas Totales:</label>
-          <input
-            type="number"
-            name="boletasTotales"
-            value={formData.boletasTotales}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label>Valor de Boleta:</label>
-          <input
-            type="number"
-            name="valorBoleta"
-            value={formData.valorBoleta}
-            onChange={handleInputChange}
-          />
-        </div>
-
-        <div>
-          <label>Primer Premio:</label>
-          <input type="file" name="primerPremio" onChange={handleFileChange} />
-        </div>
-
-        <div>
-          <label>Segundo Premio:</label>
-          <input type="file" name="segundoPremio" onChange={handleFileChange} />
-        </div>
-
-        <button type="submit">Crear Rifa</button>
-      </form>
+            <label>Valor de Boleta:</label>
+            <input
+              type="number"
+              name="valorBoleta"
+              value={formData.valorBoleta}
+              onChange={handleInputChange}
+              className="form-input"
+            />
+            <label>Primer Premio:</label>
+            <input
+              type="file"
+              name="primerPremio"
+              onChange={handleFileChange}
+              className="form-input"
+            />
+            <label>Segundo Premio:</label>
+            <input
+              type="file"
+              name="segundoPremio"
+              onChange={handleFileChange}
+              className="form-input"
+            />
+            <button className="button-create-rifa" type="submit">
+              Crear Rifa
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
