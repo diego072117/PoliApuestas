@@ -6,6 +6,8 @@ import transactionsSlice from "./transaccion/slice"
 import rifaSlice from "./rifas/slice"
 import participanteRifaSlice from "./participanteRifa/slice"
 import historialParticipanteSlice from "./HistorialParticipante/slice"
+import apuestaSlice from "./apuesta/slice"
+import participanteApuestaSlice from "./participanteApuesta/slice"
 
 const store = configureStore({
   reducer: {
@@ -13,8 +15,9 @@ const store = configureStore({
     transaccion: transactionsSlice,
     rifas: rifaSlice,
     participanteRifa: participanteRifaSlice,
-    historial: historialParticipanteSlice 
-
+    historial: historialParticipanteSlice,
+    apuestas: apuestaSlice,
+    participanteApuesta: participanteApuestaSlice,
   },
 });
 

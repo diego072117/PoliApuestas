@@ -23,6 +23,7 @@ class CreateApuesta extends FormRequest
     {
         return [
             'id_usuarioCreador' => ['required', 'integer'],
+            'nombreApuesta' => ['required', 'string','max:255'],
             'tipoDeporte' => ['required', 'string','max:255'],
             'equipoUno' => ['required', 'string','max:255'],
             'equipoDos' => ['required', 'string','max:255'],
@@ -37,8 +38,11 @@ class CreateApuesta extends FormRequest
         return [
             'id_usuarioCreador.required' => 'El campo id_usuarioCreador es obligatorio.',
 
-            'tipoDeporte.required' => 'El campo tipoDeporte es obligatorio.',
-            'tipoDeporte.string' => 'El campo tipoDeporte debe ser una cadena de texto.',
+            'nombreApuesta.required' => 'El campo nombreApuesta es obligatorio.',
+            'nombreApuesta.string' => 'El campo nombreApuesta debe ser una cadena de texto.',
+
+            'equipoUno.required' => 'El campo equipoUno es obligatorio.',
+            'equipoUno.string' => 'El campo equipoUno debe ser una cadena de texto.',
 
             'equipoUno.required' => 'El campo equipoUno es obligatorio.',
             'equipoUno.string' => 'El campo equipoUno debe ser una cadena de texto.',

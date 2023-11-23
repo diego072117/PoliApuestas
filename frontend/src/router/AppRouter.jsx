@@ -8,6 +8,8 @@ import { Rifa } from "../pages/CreateRifas/Rifas";
 import { DetallesRifa } from "../pages/DetallesRifa/DetallesRifa";
 import { HistorialParticipante } from "../pages/HistorialParticipante/HistorialParticipante";
 import { UpdateProfile } from "../pages/UpdateProfile/UpdateProfile";
+import { Apuestas } from "../pages/CreateApuestas/Apuestas";
+import { DetallesApuesta } from "../pages/DetailsApueta/DetailsApuesta";
 
 export const AppRouter = () => {
   return (
@@ -21,7 +23,9 @@ export const AppRouter = () => {
         <Route path="/updateProfile" element={<UpdateProfile />} />
         <Route path="/rifa" element={<Rifa />} />
         <Route path="/detallesRifa/:id" element={<DetallesRifa />} />
+        <Route path="/detallesApuesta/:id" element={<DetallesApuesta />} />
         <Route path="/historialParticipante" element={<HistorialParticipante />} />
+        <Route path="/apuesta" element={<Apuestas />} />
       </Routes>
     </>
   );

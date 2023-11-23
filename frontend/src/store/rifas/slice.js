@@ -14,13 +14,12 @@ const initialState = {
 
 export const createRifaAsync = createAsyncThunk(
   "rifa/createRifa",
-  async (rifaData, { dispatch }) => {
+  async (rifaData) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/Rifa/CreateRifa",
         rifaData
       );
-      await dispatch(listRifasAsync());
       return response.data;
     } catch (error) {
       throw new Error(error.message);

@@ -48,7 +48,10 @@ export const Nav = () => {
             </>
           )}
           {isUserAuthenticated() && (
-            <button className="sing-out item-nav logout-nav" onClick={LogoutUser}>
+            <button
+              className="sing-out item-nav logout-nav"
+              onClick={LogoutUser}
+            >
               Sign out
             </button>
           )}
@@ -65,9 +68,14 @@ export const Nav = () => {
             </Link>
           )}
           {isUserRolOrganizador() && (
-            <Link to="/rifa" className="item-nav color-one">
-              <i className="fa-brands fa-twitch"></i> Crear rifas
-            </Link>
+            <>
+              <Link to="/rifa" className="item-nav color-one">
+                <i className="fa-brands fa-twitch"></i> Crear rifas
+              </Link>
+              <Link to="/apuesta" className="item-nav color-one">
+                <i className="fa-brands fa-twitch"></i> Crear apuestas
+              </Link>
+            </>
           )}
         </div>
       )}

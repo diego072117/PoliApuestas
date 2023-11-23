@@ -1,67 +1,68 @@
 import { useEffect } from "react";
-import { useRifaActions } from "../../hooks/useRifaActions";
 import { useSelector } from "react-redux";
 import { useValidators } from "../../hooks/useValidations";
 import { Link } from "react-router-dom";
+import { useApuestaActions } from "../../hooks/useApuestaActions";
 
-export const ListRifas = () => {
-  const rifas = useSelector((state) => state.rifas.rifas);
-  const rifasCreador = useSelector((state) => state.rifas.rifasCreador);
+export const ListApuestas = () => {
+  const apuestas = useSelector((state) => state.apuestas.apuestas);
+  const apuestasCreador = useSelector(
+    (state) => state.apuestas.apuestasCreador
+  );
   const user = useSelector((state) => state.users.auth.user);
   const { isUserRolParticipante } = useValidators();
-  const { listRifas, listRifasUsuCreador } = useRifaActions();
+  const { listApuestas, listApuestasUsuCreador } = useApuestaActions();
 
   useEffect(() => {
-    listRifas();
-    listRifasUsuCreador(user.id);
+    listApuestas();
+    listApuestasUsuCreador(user.id);
   }, []);
 
   return (
     <div className="container-rifas">
       {isUserRolParticipante()
-        ? rifas.map((rifa) => (
+        ? apuestas.map((apuesta) => (
             <Link
-              to={`/detallesRifa/${rifa.id}`}
+              to={`/detallesApuesta/${apuesta.id}`}
               className="card-rifa"
-              key={rifa.id}
+              key={apuesta.id}
             >
               <div className="rifa">
                 <div className="info-list">
-                  <h2 className="title-rifa">{rifa.nombreRifa}</h2>
+                  <h2 className="title-rifa">{apuesta.nombreApuesta}</h2>
                   <p className="creador">
-                    {rifa.usuarioCreador.name} {rifa.usuarioCreador.lastName}
+                    {apuesta.usuarioCreador.name}{" "}
+                    {apuesta.usuarioCreador.lastName}
                   </p>
                 </div>
                 <div className="boleta">
                   <i className="fa-solid fa-money-bill"></i>
-                  <p className="costo-boleta">{rifa.valorBoleta}</p>
+                  <p className="costo-boleta">{apuesta.montoMinimo} - {apuesta.montoMaximo}</p>
                 </div>
               </div>
               <div className="date-rifa">
-                <p>{rifa.estado}</p>
+                <p>{apuesta.estado}</p>
               </div>
             </Link>
           ))
-        : rifasCreador.map((rifa) => (
+        : apuestasCreador.map((apuesta) => (
             <Link
-              to={`/detallesRifa/${rifa.id}`}
+              to={`/detallesApuesta/${apuesta.id}`}
               className="card-rifa"
-              key={rifa.id}
+              key={apuesta.id}
             >
               <div className="rifa">
                 <div className="info-list">
-                  <h2 className="title-rifa">{rifa.nombreRifa}</h2>
-                  <p className="creador">
-                    Tu rifa
-                  </p>
+                  <h2 className="title-rifa">{apuesta.nombreApuesta}</h2>
+                  <p className="creador">Tu rifa</p>
                 </div>
                 <div className="boleta">
                   <i className="fa-solid fa-money-bill"></i>
-                  <p className="costo-boleta">{rifa.valorBoleta}</p>
+                  <p className="costo-boleta">{apuesta.montoMaximo}</p>
                 </div>
               </div>
               <div className="date-rifa">
-                <p>{rifa.estado}</p>
+                <p>{apuesta.estado}</p>
               </div>
             </Link>
           ))}

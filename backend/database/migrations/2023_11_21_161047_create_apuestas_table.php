@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('apuestas', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_usuarioCreador');
+            $table->string('nombreApuesta');
             $table->string('tipoDeporte');
             $table->string('equipoUno');
             $table->string('equipoDos');
