@@ -90,8 +90,11 @@ class ApuestaController extends Controller
 
         // Obtén todos los participantes de la apuesta
         $participantes = ParticipanteApuesta::where('id_apuesta', $idApuesta)->get();
-        if ($participantes->count() < 2 || count($participantes->pluck('equipoApostado')->unique()) < 2) {
-            return response()->json(['mensaje' => 'Debe haber al menos dos participantes y al menos un equipo diferente para realizar esta acción'], 400);
+        if ($participantes->count() < 2) {
+            return response()->json(['mensaje' => 'Debe haber al menos dos participantes'], 400);
+        }
+        if (count($participantes->pluck('equipoApostado')->unique()) < 2) {
+            return response()->json(['mensaje' => 'Debe haber al menos un equipo diferente para realizar esta acción'], 400);
         }
 
         // Actualiza el campo equipoGanador en la tabla apuestas
@@ -131,6 +134,8 @@ class ApuestaController extends Controller
         } else {
             Transaccion::create(['id_usuario' => $usuarioOrganizador->id, 'monto_transaccion' => $gananciasOrganizador]);
         }
+
+        $apuesta->update(['estado' => 'finalizada']);
 
         return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente']);
     }
