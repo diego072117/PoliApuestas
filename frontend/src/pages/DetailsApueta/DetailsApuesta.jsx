@@ -170,7 +170,7 @@ export const DetallesApuesta = () => {
                     {participante.usuarioParticipante.name}{" "}
                     {participante.usuarioParticipante.lastName}
                   </p>
-                  <p># {participante.valorApostado}</p>
+                  <p># {participante.equipoApostado}</p>
                 </div>
                 <div className="documet-participant">
                   <p>{participante.usuarioParticipante.numeroDocumento}</p>
