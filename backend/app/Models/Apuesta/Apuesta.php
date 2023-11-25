@@ -21,6 +21,7 @@ class Apuesta extends Model
         'equipoDos',
         'monto',
         'equipoGanador',
+        'estado',
     ];
 
     public function creador()

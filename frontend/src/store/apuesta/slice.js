@@ -78,7 +78,7 @@ export const seleccionarGanadoresAsync = createAsyncThunk(
       );
       return response.data;
     } catch (error) {
-      throw new Error(error.message);
+      throw new Error(error.response.data.mensaje);
     }
   }
 );
@@ -158,10 +158,11 @@ const apuestaSlice = createSlice({
       .addCase(seleccionarGanadoresAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+        state.mensaje = action.error.message;
         Swal.fire({
           icon: "error",
           title: "Error",
-          text: "Error al seleccionar los ganadores.",
+          text: action.error.message,
         });
       });
   },
