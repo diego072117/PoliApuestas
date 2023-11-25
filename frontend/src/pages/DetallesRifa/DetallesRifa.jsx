@@ -3,9 +3,9 @@ import { useRifaActions } from "../../hooks/useRifaActions";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useParticipanteRifaActions } from "../../hooks/useParticipanteRifaActions";
+import { useValidators } from "../../hooks/useValidations";
 import Swal from "sweetalert2";
 import "./Module.scss";
-import { useValidators } from "../../hooks/useValidations";
 
 export const DetallesRifa = () => {
   const { id } = useParams();

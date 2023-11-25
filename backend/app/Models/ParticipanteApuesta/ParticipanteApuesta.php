@@ -17,7 +17,6 @@ class ParticipanteApuesta extends Model
     protected $fillable = [
         'id_usuario',
         'id_apuesta',
-        'valorApostado',
         'equipoApostado',
     ];
 

@@ -16,7 +16,7 @@ export const registrarParticipanteApuestaAsync = createAsyncThunk(
   async (participanteData) => {
     try {
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/Participantes/CreateParticipante",
+        "http://127.0.0.1:8000/api/ParticipantesApuesta/CreateParticipanteApuesta",
         participanteData
       );
 
@@ -56,7 +56,7 @@ const participanteApuestaSlice = createSlice({
         Swal.fire({
           icon: "success",
           title: "Compra realizda",
-          text: "Ahora estas participando en esta rifa.",
+          text: "Ahora estas participando en esta apuesta.",
         }).then(() => {
           window.location.reload();
         });

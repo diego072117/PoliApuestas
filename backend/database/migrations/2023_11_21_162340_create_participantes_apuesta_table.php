@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_usuario');
             $table->unsignedBigInteger('id_apuesta');
-            $table->integer('valorApostado');
             $table->string('equipoApostado');
             $table->timestamps();
             $table->softDeletes();

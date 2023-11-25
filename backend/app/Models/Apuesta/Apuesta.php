@@ -19,8 +19,7 @@ class Apuesta extends Model
         'tipoDeporte',
         'equipoUno',
         'equipoDos',
-        'montoMinimo',
-        'montoMaximo',
+        'monto',
         'equipoGanador',
     ];
 

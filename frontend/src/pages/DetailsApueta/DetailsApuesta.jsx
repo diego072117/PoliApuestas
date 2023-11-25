@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { useValidators } from "../../hooks/useValidations";
 import { useParticipanteApuestaActions } from "../../hooks/useParticipanteApuestaActios";
-import Swal from "sweetalert2";
+import { useValidators } from "../../hooks/useValidations";
 import { useApuestaActions } from "../../hooks/useApuestaActions";
+import Swal from "sweetalert2";
 
 export const DetallesApuesta = () => {
   const { id } = useParams();
@@ -13,14 +13,45 @@ export const DetallesApuesta = () => {
   const participanteApuesta = useSelector(
     (state) => state.participanteApuesta.participantes
   );
+  const [selectedEquipo, setSelectedEquipo] = useState("");
+  const [equipoGanador, setEquipoGandor] = useState("");
   const { getApuestaById } = useApuestaActions();
+  const { obtenerParticipantesPorApuesta, registrarParticipanteApuesta } =
+    useParticipanteApuestaActions();
+  const { seleccionarGanadoresApuesta } = useApuestaActions();
   const { isUserRolParticipante, isUserRolOrganizador } = useValidators();
-  const { obtenerParticipantesPorApuesta } = useParticipanteApuestaActions();
 
   useEffect(() => {
     getApuestaById(id);
     obtenerParticipantesPorApuesta(id);
   }, [id]);
+
+  const handleRegistroParticipante = () => {
+    if (selectedEquipo) {
+      const participanteData = {
+        id_usuario: user.id,
+        id_apuesta: id,
+        equipoApostado: selectedEquipo,
+      };
+
+      registrarParticipanteApuesta(participanteData);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Elije equipo y apuesta por el",
+      });
+    }
+  };
+
+  const handleSeleccionarGanadores = () => {
+    const dataGanador = {
+      id_apuesta: id,
+      equipoGanador: equipoGanador,
+    };
+    seleccionarGanadoresApuesta(dataGanador);
+  };
+
 
   return (
     <div className="container-details">
@@ -49,12 +80,8 @@ export const DetallesApuesta = () => {
               </p>
 
               <p>
-                Monto Minimo:
-                <span className="text-info-rifa">{apuesta.montoMinimo}</span>
-              </p>
-              <p>
-                Monto Maximo:
-                <span className="text-info-rifa">{apuesta.montoMaximo}</span>
+                Monto:
+                <span className="text-info-rifa">{apuesta.monto}</span>
               </p>
               <p>
                 Equipo ganador:
@@ -98,6 +125,34 @@ export const DetallesApuesta = () => {
               </p>
             </div>
           </div>
+          {isUserRolParticipante() && !apuesta.equipoGanador && (
+            <div className="apostar-por">
+              <p>Seleccione el equipo:</p>
+              <select
+                value={selectedEquipo}
+                onChange={(e) => setSelectedEquipo(e.target.value)}
+              >
+                <option>Selecciona un equipo</option>
+                <option value={apuesta.equipoUno}>{apuesta.equipoUno}</option>
+                <option value={apuesta.equipoDos}>{apuesta.equipoDos}</option>
+              </select>
+              <button onClick={handleRegistroParticipante}>Apostar</button>
+            </div>
+          )}
+          {isUserRolOrganizador() && !apuesta.equipoGanador && (
+            <div className="equipo-ganador">
+              <p>Equipo ganador:</p>
+              <select
+                value={equipoGanador}
+                onChange={(e) => setEquipoGandor(e.target.value)}
+              >
+                <option>Selecciona un equipo</option>
+                <option value={apuesta.equipoUno}>{apuesta.equipoUno}</option>
+                <option value={apuesta.equipoDos}>{apuesta.equipoDos}</option>
+              </select>
+              <button onClick={handleSeleccionarGanadores}>Ganador</button>
+            </div>
+          )}
         </div>
       )}
 

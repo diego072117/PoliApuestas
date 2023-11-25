@@ -27,8 +27,7 @@ class CreateApuesta extends FormRequest
             'tipoDeporte' => ['required', 'string','max:255'],
             'equipoUno' => ['required', 'string','max:255'],
             'equipoDos' => ['required', 'string','max:255'],
-            'montoMinimo' => ['required', 'numeric'],
-            'montoMaximo' => ['required', 'numeric'],
+            'monto' => ['required', 'numeric'],
             'equipoGanador' => ['nullable', 'string','max:255'],
         ];
     }
@@ -50,13 +49,8 @@ class CreateApuesta extends FormRequest
             'equipoDos.required' => 'El campo equipoDos es obligatorio.',
             'equipoDos.string' => 'El campo equipoDos debe ser una cadena de texto.',
 
-            'montoMinimo.required' => 'El campo montoMinimo es obligatorio.',
-            'montoMinimo.numeric' => 'El campo montoMinimo debe ser un número.',
-            'montoMinimo.min' => 'El campo montoMinimo debe ser mayor o igual a cero.',
-
-            'montoMaximo.required' => 'El campo montoMaximo es obligatorio.',
-            'montoMaximo.numeric' => 'El campo montoMaximo debe ser un número.',
-            'montoMaximo.min' => 'El campo montoMaximo debe ser mayor o igual a cero.',
+            'monto.required' => 'El campo monto es obligatorio.',
+            'monto.numeric' => 'El campo monto debe ser un número.',
             
             'equipoGanador.string' => 'El campo equipoGanador debe ser una cadena de texto.',
 

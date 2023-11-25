@@ -11,8 +11,7 @@ export const Apuestas = () => {
     tipoDeporte: "",
     equipoUno: "",
     equipoDos: "",
-    montoMinimo: "",
-    montoMaximo: "",
+    monto: "",
     equipoGanador: null,
   });
 
@@ -69,20 +68,11 @@ export const Apuestas = () => {
               className="form-input"
             />
 
-            <label>Monto minimo:</label>
+            <label>Monto:</label>
             <input
               type="number"
-              name="montoMinimo"
-              value={formData.montoMinimo}
-              onChange={handleInputChange}
-              className="form-input"
-            />
-
-            <label>Monto maximo:</label>
-            <input
-              type="number"
-              name="montoMaximo"
-              value={formData.montoMaximo}
+              name="monto"
+              value={formData.monto}
               onChange={handleInputChange}
               className="form-input"
             />
