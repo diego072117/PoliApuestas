@@ -68,6 +68,21 @@ export const listApuestasUsuarioCreadorAsync = createAsyncThunk(
   }
 );
 
+export const seleccionarGanadoresAsync = createAsyncThunk(
+  "apuesta/seleccionarGanadores",
+  async (dataGanador) => {
+    try {
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/Apuestas/SeleccionarGanadores",
+        dataGanador
+      );
+      return response.data;
+    } catch (error) {
+      throw new Error(error.message);
+    }
+  }
+);
+
 const apuestaSlice = createSlice({
   name: "apuestas",
   initialState,
@@ -126,6 +141,28 @@ const apuestaSlice = createSlice({
       .addCase(listApuestaByIdAsync.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(seleccionarGanadoresAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(seleccionarGanadoresAsync.fulfilled, (state) => {
+        state.status = "succeeded";
+        Swal.fire({
+          icon: "success",
+          title: "Ganadores seleccionados exitosamente",
+          text: "Los ganadores se han registrado exitosamente.",
+        }).then(() => {
+          window.location.reload();
+        });
+      })
+      .addCase(seleccionarGanadoresAsync.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+        Swal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Error al seleccionar los ganadores.",
+        });
       });
   },
 });

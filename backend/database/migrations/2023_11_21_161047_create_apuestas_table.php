@@ -18,8 +18,7 @@ return new class extends Migration
             $table->string('tipoDeporte');
             $table->string('equipoUno');
             $table->string('equipoDos');
-            $table->integer('montoMinimo');
-            $table->integer('montoMaximo');
+            $table->integer('monto');
             $table->string('equipoGanador')->nullable();
             $table->string('estado')->default('activa');
             $table->timestamps();

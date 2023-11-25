@@ -52,6 +52,7 @@ Route::group(['prefix' => 'Apuestas', 'controller' => ApuestaController::class],
     Route::get('/GetAllApuestas', 'getAllApuestas');
     Route::get('/GetApuesta/{id}', 'getApuestaById');
     Route::get('/GetAllApuestasUsuarioCreador/{id}', 'listarApuestasUsuarioCreador');
+    Route::post('/SeleccionarGanadores', 'seleccionarGanadoresApuesta');
 });
 
 Route::group(['prefix' => 'ParticipantesApuesta', 'controller' => ParticipanteApuestaController::class], function () {

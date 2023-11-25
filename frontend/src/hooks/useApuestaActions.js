@@ -5,6 +5,7 @@ import {
   listApuestaByIdAsync,
   listApuestasAsync,
   listApuestasUsuarioCreadorAsync,
+  seleccionarGanadoresAsync,
 } from "../store/apuesta/slice";
 
 export const useApuestaActions = () => {
@@ -26,10 +27,15 @@ export const useApuestaActions = () => {
     dispatch(listApuestaByIdAsync(id));
   };
 
+  const seleccionarGanadoresApuesta = (dataGanador) =>{
+    dispatch(seleccionarGanadoresAsync(dataGanador))
+  }
+
   return {
     createApuesta,
     listApuestas,
     listApuestasUsuCreador,
     getApuestaById,
+    seleccionarGanadoresApuesta
   };
 };

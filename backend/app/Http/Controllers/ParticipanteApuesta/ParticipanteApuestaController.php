@@ -22,13 +22,11 @@ class ParticipanteApuestaController extends Controller
         }
 
         $apuesta = Apuesta::findOrFail($request->id_apuesta);
+        $costoApuesta = $apuesta->monto;
 
-        $montoMinimo = $apuesta['montoMinimo'];
-        $montoMaximo = $apuesta['montoMaximo'];
-
-        if ($request->valorApostado >= $montoMinimo && $request->valorApostado <= $montoMaximo) {
+        if ($montoTransaccion >= $costoApuesta) {
             // Calcular el nuevo valor del campo monto_transaccion
-            $nuevoMontoTransaccion = $montoTransaccion - $request->valorApostado;
+            $nuevoMontoTransaccion = $montoTransaccion - $costoApuesta;
 
             // Actualizar el campo monto_transaccion en la tabla transaccion
             $usuario->transaccion->update(['monto_transaccion' => $nuevoMontoTransaccion]);
