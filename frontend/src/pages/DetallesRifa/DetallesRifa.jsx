@@ -11,15 +11,15 @@ export const DetallesRifa = () => {
   const { id } = useParams();
   const rifa = useSelector((state) => state.rifas.rifaById);
   const user = useSelector((state) => state.users.auth.user);
-  const participantes = useSelector(
-    (state) => state.participanteRifa.participantes
+  const { participantes, status } = useSelector(
+    (state) => state.participanteRifa
   );
   const [numeroBoletaSeleccionada, setNumeroBoletaSeleccionada] = useState("");
-  const { getRifaById, getBoletasDisponibles } = useRifaActions();
+  const { getRifaById, getBoletasDisponibles, seleccionarGanadores } =
+    useRifaActions();
   const { isUserRolParticipante, isUserRolOrganizador } = useValidators();
   const { registrarParticipante, obtenerParticipantesPorRifa } =
     useParticipanteRifaActions();
-  const { seleccionarGanadores } = useRifaActions();
 
   const boletasDisponibles = useSelector(
     (state) => state.rifas.boletasDisponibles
@@ -77,8 +77,11 @@ export const DetallesRifa = () => {
                         </option>
                       ))}
                     </select>
-                    <button onClick={handleRegistroParticipante}>
-                      Comprar
+                    <button
+                      onClick={handleRegistroParticipante}
+                      disabled={status === "loading"}
+                    >
+                      {status === "loading" ? 'Cargando...' : 'Comprar'}
                     </button>
                   </div>
                 ) : (
