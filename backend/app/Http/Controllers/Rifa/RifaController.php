@@ -119,6 +119,7 @@ class RifaController extends Controller
         // Guardar los ganadores en la tabla Rifas
         $rifa->primerGanador = $ganador1;
         $rifa->segundoGanador = $ganador2;
+        $rifa->estado = "finalizada";
         $rifa->save();
 
         return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente'], 200);
