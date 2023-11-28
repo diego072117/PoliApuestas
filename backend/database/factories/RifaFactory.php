@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\Rifas\Rifas;
-use App\Models\Usuarios\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

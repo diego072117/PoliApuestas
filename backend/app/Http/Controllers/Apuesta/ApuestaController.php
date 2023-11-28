@@ -137,6 +137,6 @@ class ApuestaController extends Controller
 
         $apuesta->update(['estado' => 'finalizada']);
 
-        return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente']);
+        return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente'],200);
     }
 }
