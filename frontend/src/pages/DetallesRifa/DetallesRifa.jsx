@@ -81,7 +81,7 @@ export const DetallesRifa = () => {
                       onClick={handleRegistroParticipante}
                       disabled={status === "loading"}
                     >
-                      {status === "loading" ? 'Cargando...' : 'Comprar'}
+                      {status === "loading" ? "Cargando..." : "Comprar"}
                     </button>
                   </div>
                 ) : (
@@ -89,11 +89,18 @@ export const DetallesRifa = () => {
                 )}
               </div>
             )}
-            {isUserRolOrganizador() && (
-              <button onClick={handleSeleccionarGanadores}>
-                Seleccionar Ganadores
-              </button>
-            )}
+            {isUserRolOrganizador() &&
+              !rifa.primerGanador &&
+              !rifa.segundoGanador && (
+                <button
+                  onClick={handleSeleccionarGanadores}
+                  disabled={status === "loading"}
+                >
+                  {status === "loading"
+                    ? "Cargando..."
+                    : "Seleccionar Ganadores"}
+                </button>
+              )}
           </div>
           <div className="info-rifa-container">
             <div className="info-rifa-details">
