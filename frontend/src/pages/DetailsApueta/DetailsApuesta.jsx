@@ -5,13 +5,14 @@ import { useParticipanteApuestaActions } from "../../hooks/useParticipanteApuest
 import { useValidators } from "../../hooks/useValidations";
 import { useApuestaActions } from "../../hooks/useApuestaActions";
 import Swal from "sweetalert2";
+import "./Module.scss";
 
 export const DetallesApuesta = () => {
   const { id } = useParams();
   const apuesta = useSelector((state) => state.apuestas.apuestasById);
   const user = useSelector((state) => state.users.auth.user);
-  const participanteApuesta = useSelector(
-    (state) => state.participanteApuesta.participantes
+  const { participantes, status } = useSelector(
+    (state) => state.participanteApuesta
   );
   const [selectedEquipo, setSelectedEquipo] = useState("");
   const [equipoGanador, setEquipoGandor] = useState("");
@@ -27,7 +28,7 @@ export const DetallesApuesta = () => {
   }, [id]);
 
   const handleRegistroParticipante = () => {
-    if (selectedEquipo) {
+    if (selectedEquipo && selectedEquipo != "Selecciona un equipo") {
       const participanteData = {
         id_usuario: user.id,
         id_apuesta: id,
@@ -39,19 +40,26 @@ export const DetallesApuesta = () => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Elije equipo y apuesta por el",
+        text: "Elije un equipo y apuesta por el",
       });
     }
   };
 
   const handleSeleccionarGanadores = () => {
-    const dataGanador = {
-      id_apuesta: id,
-      equipoGanador: equipoGanador,
-    };
-    seleccionarGanadoresApuesta(dataGanador);
+    if (equipoGanador && equipoGanador != "Selecciona un equipo") {
+      const dataGanador = {
+        id_apuesta: id,
+        equipoGanador: equipoGanador,
+      };
+      seleccionarGanadoresApuesta(dataGanador);
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Seleccione el equipo ganador",
+      });
+    }
   };
-
 
   return (
     <div className="container-details">
@@ -131,12 +139,18 @@ export const DetallesApuesta = () => {
               <select
                 value={selectedEquipo}
                 onChange={(e) => setSelectedEquipo(e.target.value)}
+                className="form-input"
               >
                 <option>Selecciona un equipo</option>
                 <option value={apuesta.equipoUno}>{apuesta.equipoUno}</option>
                 <option value={apuesta.equipoDos}>{apuesta.equipoDos}</option>
               </select>
-              <button onClick={handleRegistroParticipante}>Apostar</button>
+              <button
+                onClick={handleRegistroParticipante}
+                disabled={status === "loading"}
+              >
+                {status === "loading" ? "Cargando..." : "Apostar"}
+              </button>
             </div>
           )}
           {isUserRolOrganizador() && !apuesta.equipoGanador && (
@@ -145,25 +159,31 @@ export const DetallesApuesta = () => {
               <select
                 value={equipoGanador}
                 onChange={(e) => setEquipoGandor(e.target.value)}
+                className="form-input"
               >
                 <option>Selecciona un equipo</option>
                 <option value={apuesta.equipoUno}>{apuesta.equipoUno}</option>
                 <option value={apuesta.equipoDos}>{apuesta.equipoDos}</option>
               </select>
-              <button onClick={handleSeleccionarGanadores}>Ganador</button>
+              <button
+                onClick={handleSeleccionarGanadores}
+                disabled={status === "loading"}
+              >
+                Ganador
+              </button>
             </div>
           )}
         </div>
       )}
 
-      {participanteApuesta && (
+      {participantes && (
         <div className="details-rifa">
           <div className="header-details">
             <h2 className="title-daails">Participantes </h2>
             <h2>Apostado</h2>
           </div>
           <div className="scroll-participantes">
-            {participanteApuesta.map((participante) => (
+            {participantes.map((participante) => (
               <div className="participantes-rifa" key={participante.id}>
                 <div className="info-participant">
                   <p>

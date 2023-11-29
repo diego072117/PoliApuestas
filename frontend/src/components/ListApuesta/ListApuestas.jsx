@@ -37,7 +37,7 @@ export const ListApuestas = () => {
                 </div>
                 <div className="boleta">
                   <i className="fa-solid fa-money-bill"></i>
-                  <p className="costo-boleta">{apuesta.montoMinimo} - {apuesta.montoMaximo}</p>
+                  <p className="costo-boleta">{apuesta.monto}</p>
                 </div>
               </div>
               <div className="date-rifa">

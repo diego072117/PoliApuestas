@@ -120,7 +120,11 @@ class ApuestaController extends Controller
 
                 // Accede al usuario y actualiza su transacción con las ganancias
                 $usuario = Usuario::find($participante->id_usuario);
-                $usuario->transaccion->update(['monto_transaccion' => $usuario->transaccion->monto_transaccion + $ganancias]);
+                if ($usuario->transaccion) {
+                    $usuario->transaccion->update(['monto_transaccion' => $usuario->transaccion->monto_transaccion + $ganancias]);
+                } else {
+                    Transaccion::create(['id_usuario' => $usuario->id, 'monto_transaccion' => $ganancias]);
+                }
             }
         }
 
@@ -137,6 +141,6 @@ class ApuestaController extends Controller
 
         $apuesta->update(['estado' => 'finalizada']);
 
-        return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente'],200);
+        return response()->json(['mensaje' => 'Ganadores seleccionados exitosamente'], 200);
     }
 }
