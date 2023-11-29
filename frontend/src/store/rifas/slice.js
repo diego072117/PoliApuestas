@@ -109,6 +109,8 @@ const rifaSlice = createSlice({
           icon: "success",
           title: "Rifa creada exitosamente",
           text: "La rifa se ha registrado exitosamente.",
+        }).then(() => {
+          window.location.href = "/dashboard";
         });
       })
       .addCase(createRifaAsync.rejected, (state, action) => {

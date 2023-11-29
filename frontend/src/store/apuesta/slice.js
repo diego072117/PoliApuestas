@@ -98,6 +98,8 @@ const apuestaSlice = createSlice({
           icon: "success",
           title: "Apuesta creada exitosamente",
           text: "La apuesta se ha registrado exitosamente.",
+        }).then(() => {
+          window.location.href = "/dashboard";
         });
       })
       .addCase(createApuestaAsync.rejected, (state, action) => {

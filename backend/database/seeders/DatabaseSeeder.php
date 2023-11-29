@@ -12,6 +12,9 @@ class DatabaseSeeder extends Seeder
         // Otros seeders aquí
         UsuariosSeeder::class,
         RifasSeeder::class,
+        ApuestaSeeder::class,
+        ParticipantesRifaSeeder::class,
+        ParticipantesApuestaSeeder::class,
     ];
 
     public function run()
