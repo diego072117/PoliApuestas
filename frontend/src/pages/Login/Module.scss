@@ -14,8 +14,8 @@
     color: #fff;
     font-family: monospace;
     margin: 6em 0 1em;
-    i{
-        font-size: 2em;
+    i {
+      font-size: 2em;
     }
     h2 {
       margin: 1em 0;
@@ -56,6 +56,10 @@
       border-radius: 5px;
       color: #fff;
       font-weight: 600;
+      &:disabled {
+        background-color: #555;
+        cursor: not-allowed;
+      }
     }
   }
 }

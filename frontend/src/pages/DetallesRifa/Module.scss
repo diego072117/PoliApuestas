@@ -84,3 +84,17 @@
     color: #817f7f;
   }
 }
+
+.button-rifa-participant {
+  background-color: #238636;
+  padding: 6px 16px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  &:disabled {
+    background-color: #555; 
+    cursor: not-allowed;
+  }
+}

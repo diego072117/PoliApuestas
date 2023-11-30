@@ -24,6 +24,7 @@ export const Login = () => {
     setFormData({ ...formData, [name]: value });
   };
 
+  const { status } = useSelector((state) => state.users);
   const user = useSelector((state) => state.users.auth.access_token);
   useEffect(() => {
     if (user != false) {
@@ -58,8 +59,12 @@ export const Login = () => {
             className="form-input"
           />
 
-          <button className="button-login" type="submit">
-            Sign in
+          <button
+            className="button-login"
+            disabled={status === "loading"}
+            type="submit"
+          >
+            {status === "loading" ? "Cargando..." : "Sign in"}
           </button>
         </form>
       </div>
