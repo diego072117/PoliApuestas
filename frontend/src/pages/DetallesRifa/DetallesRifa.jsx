@@ -65,6 +65,7 @@ export const DetallesRifa = () => {
                 {boletasDisponibles && boletasDisponibles.length > 0 ? (
                   <div>
                     <select
+                      className="form-input"
                       value={numeroBoletaSeleccionada}
                       onChange={(e) =>
                         setNumeroBoletaSeleccionada(e.target.value)
@@ -78,6 +79,7 @@ export const DetallesRifa = () => {
                       ))}
                     </select>
                     <button
+                      className="button-rifa-participant"
                       onClick={handleRegistroParticipante}
                       disabled={status === "loading"}
                     >
@@ -93,6 +95,7 @@ export const DetallesRifa = () => {
               !rifa.primerGanador &&
               !rifa.segundoGanador && (
                 <button
+                  className="button-rifa-participant"
                   onClick={handleSeleccionarGanadores}
                   disabled={status === "loading"}
                 >

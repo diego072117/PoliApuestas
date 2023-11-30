@@ -23,7 +23,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'p@gmail.com',
             'rol' => 'participante',
             'telefono' => '123456789',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -36,7 +36,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'santi@gmail.com',
             'rol' => 'participante',
             'telefono' => '123456789',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -49,7 +49,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'merly@gmail.com',
             'rol' => 'participante',
             'telefono' => '123456789',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -62,7 +62,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'luisa@gmail.com',
             'rol' => 'participante',
             'telefono' => '123456789',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -75,7 +75,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'Johan@gmail.com',
             'rol' => 'participante',
             'telefono' => '136892347',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -88,7 +88,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'Julienth@gmail.com',
             'rol' => 'participante',
             'telefono' => '136892347',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -101,7 +101,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'nicolasn@gmail.com',
             'rol' => 'participante',
             'telefono' => '136892347',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -114,7 +114,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'kevin@gmail.com',
             'rol' => 'participante',
             'telefono' => '136892347',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -127,7 +127,7 @@ class UsuariosSeeder extends Seeder
             'email' => 'carlos@gmail.com',
             'rol' => 'participante',
             'telefono' => '136892347',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -136,11 +136,11 @@ class UsuariosSeeder extends Seeder
             'lastName' => 'Garcia',
             'secondLastName' => null,
             'tipoDocumento' => 'CC',
-            'numeroDocumento' => '1112236547',
+            'numeroDocumento' => '1112236',
             'email' => 'dani@gmail.com',
             'rol' => 'organizador',
             'telefono' => '987654321',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -149,11 +149,11 @@ class UsuariosSeeder extends Seeder
             'lastName' => 'Melo',
             'secondLastName' => null,
             'tipoDocumento' => 'CC',
-            'numeroDocumento' => '1112235689',
+            'numeroDocumento' => '1112235',
             'email' => 'Juli@gmail.com',
             'rol' => 'organizador',
             'telefono' => '987654745',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
         Usuario::create([
@@ -162,11 +162,11 @@ class UsuariosSeeder extends Seeder
             'lastName' => 'Sierra',
             'secondLastName' => null,
             'tipoDocumento' => 'CC',
-            'numeroDocumento' => '1564897123',
+            'numeroDocumento' => '1564897',
             'email' => 'Daniel@gmail.com',
             'rol' => 'organizador',
             'telefono' => '987654691',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678aA.'),
         ]);
 
     }
